@@ -207,6 +207,16 @@
 ;; Magit - set shortcut for magit-status screen
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;;
+;; Org mode key bindings
+;;
+
+(setq org-log-done 'time)    ;; leave timestamp when set to DONE
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 
 
