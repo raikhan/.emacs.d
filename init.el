@@ -169,6 +169,9 @@
  '(blink-cursor-mode nil)
  '(coffee-tab-width 2)
  '(menu-bar-mode nil)
+ '(package-selected-packages
+   (quote
+    (markdown-mode auto-complete polymode key-chord buffer-move expand-region ace-jump-mode multiple-cursors magit tagedit rainbow-delimiters projectile smex ido-ubiquitous cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
