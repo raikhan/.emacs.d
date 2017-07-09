@@ -10,10 +10,11 @@
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
 ;; manually downloaded packages
 (add-to-list 'load-path "~/.emacs.d/packages/")
-(add-to-list 'load-path "~/.emacs.d/packages/expand-region/")
 
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -94,7 +95,10 @@
     auto-complete
 
     ;; markdown major mode 
-    markdown-mode))
+    markdown-mode
+
+    ;; ELPY python mode
+    elpy))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -160,7 +164,7 @@
 (load "setup-js.el")
 (load "setup-R.el") ;; Milan
 (load "Rmarkdown.el") ;; Milan
-;; (load "setup-python.el") ;; Milan
+(load "setup-python.el") ;; Milan
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
