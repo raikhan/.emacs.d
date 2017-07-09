@@ -24,10 +24,13 @@
   ;; Enable elpy mode
   (elpy-mode)
   ;; Jedi backend                                                                                       
-  ;; (jedi:setup)
-  ;; (setq jedi:complete-on-dot t) ;optional                                                               
-  ;; (auto-complete-mode)
-  ;; (jedi:ac-setup)
+  (jedi:setup)
+  (setq jedi:complete-on-dot t) ;optional                                                               
+  (auto-complete-mode)
+  (jedi:ac-setup)
+
+  (flycheck-mode)
+
   (setq elpy-rpc-python-command "python3") 
   (python-shell-interpreter "ipython3")
   )
@@ -36,3 +39,14 @@
 
 (add-hook 'python-mode-hook (lambda ()
                               (run-hooks 'personal-python-mode-hook)))
+
+
+;; ;; EIN
+;; (package-initialize)
+;; (require 'ein)
+;; (require 'ein-loaddefs)
+;; (require 'ein-notebook)
+;; (require 'ein-subpackages)
+;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+
+
