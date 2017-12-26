@@ -12,6 +12,8 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 ;; manually downloaded packages
 (add-to-list 'load-path "~/.emacs.d/packages/")
@@ -229,4 +231,18 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 
+;;
+;; Scala
+;;
 
+;; Scala mode ENSIME
+(require 'use-package)
+(use-package ensime
+  :ensure t
+  :pin melpa-stable)
+
+;; add sbt to path
+(add-to-list 'exec-path "/usr/local/bin")
+
+;; hook to start ensime-mode when scala-mode starts
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
