@@ -34,6 +34,11 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+
+;; load exec-path-from-shell package
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; The packages you want installed. You can also install these
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
@@ -183,7 +188,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (markdown-mode auto-complete polymode key-chord buffer-move expand-region ace-jump-mode multiple-cursors magit tagedit rainbow-delimiters projectile smex ido-ubiquitous cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell)))
+    (indium markdown-mode auto-complete polymode key-chord buffer-move expand-region ace-jump-mode multiple-cursors magit tagedit rainbow-delimiters projectile smex ido-ubiquitous cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -243,6 +248,9 @@
 
 ;; add sbt to path
 (add-to-list 'exec-path "/usr/local/bin")
+
+;; remove welcome screen
+(setq ensime-startup-notification nil)
 
 ;; hook to start ensime-mode when scala-mode starts
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
