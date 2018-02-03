@@ -12,11 +12,11 @@
 ;; enable elpy mode for Python
 (elpy-enable)
 
-;; needed to use ipython as python shell in Emacs
-(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-(elpy-use-ipython)
-
 (setq elpy-rpc-backend "jedi")
+
+;; setup IPython as Python console shell
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --simple-prompt")
 
 ;; setup personal python mode
 (defun personal-python-mode-defaults ()
