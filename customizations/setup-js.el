@@ -20,3 +20,16 @@
             (setq coffee-cleanup-whitespace nil)))
 (custom-set-variables
  '(coffee-tab-width 2))
+
+
+;; setup js2-mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
+
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
+;; start Indium and interatcion mode for JS files
+(require 'indium)
+(add-hook 'js2-mode-hook 'indium-interaction-mode)
