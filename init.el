@@ -133,11 +133,12 @@
 
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
+(global-set-key (kbd "C-x b") 'helm-mini)
+
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
 
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 (helm-mode 1)
-
 
