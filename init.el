@@ -45,6 +45,25 @@
 ;;     (add-to-list 'my-packages 'exec-path-from-shell))
 
 
+;; Mac only - swap Alt and Cmd
+(setq mac-command-modifier 'meta)
+(setq Mac-option-modifier 'super)
+
+
+;;;;
+;; Customization
+;;;;
+
+
+;; Add a directory to our load path so that when you `load` things
+;; below, Emacs knows where to look for the corresponding file.
+(add-to-list 'load-path "~/.emacs.d/customizations")
+
+;; These customizations change the way emacs looks and disable/enable
+;; some user interface elements
+(load "ui.el")
+
+
 ;; (custom-set-variables
 ;;  ;; custom-set-variables was added by Custom.
 ;;  ;; If you edit it by hand, you could mess it up, so be careful.
