@@ -28,24 +28,41 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; load exec-path-from-shell package
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (helm use-package tagedit smex rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord ido-ubiquitous flycheck expand-region ensime elpy ein clojure-mode-extra-font-locking cider buffer-move ace-jump-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+;; ;; On OS X, an Emacs instance started from the graphical user
+;; ;; interface will have a different environment than a shell in a
+;; ;; terminal window, because OS X does not run a shell during the
+;; ;; login. Obviously this will lead to unexpected results when
+;; ;; calling external utilities like make from Emacs.
+;; ;; This library works around this problem by copying important
+;; ;; environment variables from the user's shell.
+;; ;; https://github.com/purcell/exec-path-from-shell
+;; (if (eq system-type 'darwin)
+;;     (add-to-list 'my-packages 'exec-path-from-shell))
+
+
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(package-selected-packages
+;;    (quote
+;;     (helm tagedit smex rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord ido-ubiquitous flycheck expand-region ensime elpy ein clojure-mode-extra-font-locking cider buffer-move ace-jump-mode))))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  )
 
 ;; use 'a' in dired mode
 (put 'dired-find-alternate-file 'disabled nil)
+
 
 
 
@@ -64,6 +81,7 @@
 
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
+
 
 (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
