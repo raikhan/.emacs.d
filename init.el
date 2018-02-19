@@ -45,11 +45,6 @@
 ;;     (add-to-list 'my-packages 'exec-path-from-shell))
 
 
-;; Mac only - swap Alt and Cmd
-(setq mac-command-modifier 'meta)
-(setq Mac-option-modifier 'super)
-
-
 ;;;;
 ;; Customization
 ;;;;
@@ -59,9 +54,26 @@
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
+;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; ;; environment variables
+(load "shell-integration.el")
+
+;; These customizations make it easier for you to navigate files,
+;; switch buffers, and choose options from the minibuffer.
+(load "navigation.el")
+
 ;; These customizations change the way emacs looks and disable/enable
 ;; some user interface elements
 (load "ui.el")
+
+;; These customizations make editing a bit nicer.
+(load "editing.el")
+
+;; Hard-to-categorize customizations
+(load "misc.el")
+
+;; For editing lisps
+(load "elisp-editing.el")
 
 
 ;; (custom-set-variables
@@ -142,3 +154,17 @@
 
 (helm-mode 1)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (xref-js2 use-package tagedit smex rainbow-delimiters polymode paredit multiple-cursors markdown-mode magit key-chord julia-mode indium ido-ubiquitous helm-projectile flycheck expand-region exec-path-from-shell ensime elpy ein clojure-mode-extra-font-locking cider buffer-move ace-jump-mode ac-js2))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

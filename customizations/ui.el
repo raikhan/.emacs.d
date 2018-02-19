@@ -28,8 +28,12 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 (load-theme 'distinguished t)
 
-;; increase font size for better readability
+;; set new font size
 (set-face-attribute 'default nil :height 200)
+
+;; Mac only - swap Alt and Cmd
+(setq mac-command-modifier 'meta)
+(setq Mac-option-modifier 'super)
 
 ;; Start with maximized window
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
