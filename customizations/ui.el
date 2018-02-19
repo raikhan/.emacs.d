@@ -69,3 +69,8 @@
 
 ;; no bell
 (setq ring-bell-function 'ignore)
+
+;; ;; golden ratio - adjust size to maximize working window
+;; (require 'golden-ratio)
+;; (golden-ratio-mode 1)
+

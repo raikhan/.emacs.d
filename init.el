@@ -61,15 +61,13 @@
     ;; git integration
     magit
 
-    ;; multiple cursors
+    ;; Minor navigation/UI packages
     multiple-cursors
-
-    ;; expand region
     expand-region
-
-    ;; key chords
     key-chord
-
+    golden-ratio
+    ace-jump-mode
+    
     ;; poly mode (for R markdown)
     polymode
 
@@ -183,10 +181,11 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+    (golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+

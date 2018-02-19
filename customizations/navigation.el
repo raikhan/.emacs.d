@@ -154,6 +154,7 @@
 (key-chord-mode 1)
 
 ;; ace-jump-mode 
+(require 'ace-jump-mode)
 (global-set-key (kbd "C-z") 'ace-jump-mode)
 
 
