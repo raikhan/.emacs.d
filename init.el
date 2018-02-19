@@ -48,6 +48,10 @@
     ;; https://github.com/clojure-emacs/cider
     cider
 
+    ;; Smart navigation with Helm
+    helm
+    helm-projectile
+   
     ;; project navigation
     projectile
 
@@ -172,3 +176,17 @@
 
 ;; automatically refresh files that changed on disk
 (global-auto-revert-mode t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
