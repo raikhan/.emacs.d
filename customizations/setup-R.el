@@ -1,7 +1,3 @@
-;; Cognizant Windows laptop - set R install location
-(setq ess-directory-containing-R "C:/Users/677193/Documents")
-(setq inferior-R-program-name "C:/Users/677193/Documents/R/R-3.4.3/bin/x64/Rterm.exe")
-
 ;; magrittr pipe - type ">" twice quickly
 (key-chord-define-global ">>" " %>% ")
 (key-chord-define-global "<<" " %<>% ")
