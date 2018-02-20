@@ -67,7 +67,11 @@
     key-chord
     golden-ratio
     ace-jump-mode
-    
+
+    ;; Python
+    elpy
+    jedi
+
     ;; poly mode (for R markdown)
     polymode
 
@@ -134,7 +138,7 @@
 ;;
 (load "Rmarkdown.el")
 (load "setup-R.el")
-;; python
+(load "setup-python.el")
 ;; javascript
 ;; html/css
 ;; c/c++
@@ -181,7 +185,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+    (jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -2,37 +2,25 @@
 ;; Python mode setup
 ;;
 
-;;
-;; Elpy
-;;
-
-;; set PATH inside Emacs (should be done before loading elpy
-(exec-path-from-shell-copy-env "PATH")
-
-;; enable elpy mode for Python
+;; Using elpy for now (switch to anaconda-mode maybe?)
 (elpy-enable)
-
-;; needed to use ipython as python shell in Emacs
-(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-(elpy-use-ipython)
-
-(setq elpy-rpc-backend "jedi")
 
 ;; setup personal python mode
 (defun personal-python-mode-defaults ()
   "Personal defaults for Python programming."
+
   ;; Enable elpy mode
   (elpy-mode)
-  ;; Jedi backend                                                                                       
+
+  ;; Jedi backend                                                                                      
   (jedi:setup)
   (setq jedi:complete-on-dot t) ;optional                                                               
-  (auto-complete-mode)
-  (jedi:ac-setup)
+  ;; needed to use ipython as python shell in Emacs
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i --simple-prompt")
 
-  (flycheck-mode)
+  ;; (setq elpy-rpc-backend "jedi")
 
-  (setq elpy-rpc-python-command "python3") 
-  (python-shell-interpreter "ipython3")
   )
 
 (setq personal-python-mode-hook 'personal-python-mode-defaults)
