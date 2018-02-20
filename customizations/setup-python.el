@@ -2,6 +2,11 @@
 ;; Python mode setup
 ;;
 
+;;
+;; Don't forget to install jedi server (M-X jedi:install-server) 
+;; when reinstalling this setup
+;;
+
 ;; Using elpy for now (switch to anaconda-mode maybe?)
 (elpy-enable)
 
@@ -15,6 +20,7 @@
   ;; Jedi backend                                                                                      
   (jedi:setup)
   (setq jedi:complete-on-dot t) ;optional                                                               
+
   ;; needed to use ipython as python shell in Emacs
   (setq python-shell-interpreter "ipython"
         python-shell-interpreter-args "-i --simple-prompt")
