@@ -135,8 +135,9 @@
 (defun tws-insert-r-chunk (header) 
   "Insert an r-chunk in markdown mode. Necessary due to interactions between polymode and yas snippet" 
   (interactive "sHeader: ") 
-  (insert (concat "```{r " header "}\n\n```")) 
+  (insert (concat "```{r " header ", warning=FALSE, message=FALSE, echo=FALSE}\n\n```")) 
   (forward-line -1))
+
 (define-key polymode-mode-map (kbd "M-n i") 'tws-insert-r-chunk)
 (define-key polymode-mode-map (kbd "M-n n") 'polymode-next-chunk-same-type)
 (define-key polymode-mode-map (kbd "M-n p") 'polymode-previous-chunk-same-type)
