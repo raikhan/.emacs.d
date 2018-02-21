@@ -37,17 +37,6 @@
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
 
-    ;; key bindings and code colorization for Clojure
-    ;; https://github.com/clojure-emacs/clojure-mode
-    clojure-mode
-
-    ;; extra syntax highlighting for clojure
-    clojure-mode-extra-font-locking
-
-    ;; integration with a Clojure REPL
-    ;; https://github.com/clojure-emacs/cider
-    cider
-
     ;; Smart navigation with Helm
     helm
     helm-projectile
@@ -68,12 +57,25 @@
     golden-ratio
     ace-jump-mode
 
+    ;; R
+    ;; ESS loaded automatically in modified Emacs 
+    polymode     ;; for R markdown
+
+
     ;; Python
     elpy
     jedi
 
-    ;; poly mode (for R markdown)
-    polymode
+    ;; HTML/CSS
+
+
+    ;; JavaScript
+    
+
+    ;; ;; Clojure
+    ;; clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
+    ;; clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
+    ;; cider ;; integration with a Clojure REPL
 
     ;; auto complete
     auto-complete
@@ -139,7 +141,7 @@
 (load "Rmarkdown.el")
 (load "setup-R.el")
 (load "setup-python.el")
-;; javascript
+(load "setup-web.el")  ;; HTML/CSS/JS
 ;; html/css
 ;; c/c++
 ;; clojure
@@ -152,10 +154,14 @@
 ;; General packages setup
 ;;
 
-;; auto-complete setup
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
+;; use company-mode for autocompletion
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; ;; auto-complete setup
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 ;; (setq ac-delay 0.1)
 ;; (setq ac-auto-show-menu 0.2)
 ;; (setq ac-quick-help-delay 0.2)
@@ -185,7 +191,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+    (company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

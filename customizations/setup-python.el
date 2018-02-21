@@ -17,15 +17,23 @@
   ;; Enable elpy mode
   (elpy-mode)
 
+  ;; Don't use auto-complete
+  (setq elpy-default-minor-modes (delete 'auto-complete elpy-default-minor-modes))
+
   ;; Jedi backend                                                                                      
   (jedi:setup)
   (setq jedi:complete-on-dot t) ;optional                                                               
+
+  (defun my/python-mode-hook ()
+    (add-to-list 'company-backends 'company-jedi))
+
+  (add-hook 'python-mode-hook 'my/python-mode-hook)
 
   ;; needed to use ipython as python shell in Emacs
   (setq python-shell-interpreter "ipython"
         python-shell-interpreter-args "-i --simple-prompt")
 
-  ;; (setq elpy-rpc-backend "jedi")
+  (setq elpy-rpc-backend "jedi")
 
   )
 
