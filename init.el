@@ -156,7 +156,15 @@
 
 ;; use company-mode for autocompletion
 (require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)     ; use globally
+
+;; company-mode settings
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
+(setq company-idle-delay .2)                         ; decrease delay before autocompletion popup shows
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+(setq company-minimum-prefix-length 1)               ; show options after second character
+(global-set-key (kbd "C-c /") 'company-files)        ; Force complete file names on "C-c /" key
 
 ;; ;; auto-complete setup
 ;; (require 'auto-complete)
@@ -191,7 +199,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+    (ac-html-csswatcher ac-html-bootstrap ac-html ac-html-angular tern-django tern-auto-complete company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
