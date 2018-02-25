@@ -25,7 +25,7 @@
   (setq jedi:complete-on-dot t) ;optional                                                               
 
   (add-to-list 'company-backends 'company-jedi)
-  (setq helm-dash-docsets '("Python 3" "Django"))
+  (setq-local helm-dash-docsets '("Python 3" "Django"))
 
   ;; needed to use ipython as python shell in Emacs
   (setq python-shell-interpreter "ipython"
