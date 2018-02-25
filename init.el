@@ -40,6 +40,7 @@
     ;; Smart navigation with Helm
     helm
     helm-projectile
+    helm-dash  ;; Dash documentation
    
     ;; project navigation
     projectile
@@ -49,6 +50,18 @@
 
     ;; git integration
     magit
+
+    ;; ;; auto complete
+    ;; auto-complete
+
+    ;; company mode
+    company
+
+    ;; markdown major mode 
+    markdown-mode
+
+    ;; flycheck syntax checker
+    flycheck
 
     ;; Minor navigation/UI packages
     multiple-cursors
@@ -67,24 +80,27 @@
     jedi
 
     ;; HTML/CSS
-
+    web-mode
+    emmet-mode
+    impatient-mode
+    company-web
+    ac-html-csswatcher
+    ac-html-bootstrap
 
     ;; JavaScript
-    
+    js2-mode
+    js2-refactor
+    skewer-mode
+    indium
+    company-tern
+   
 
     ;; ;; Clojure
     ;; clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
     ;; clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
     ;; cider ;; integration with a Clojure REPL
 
-    ;; auto complete
-    auto-complete
-
-    ;; markdown major mode 
-    markdown-mode
-
-    ;; flycheck syntax checker
-    flycheck))
+    ))
 
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -199,7 +215,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ac-html-csswatcher ac-html-bootstrap ac-html ac-html-angular tern-django tern-auto-complete company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+    (helm-dash ac-html-csswatcher ac-html-bootstrap ac-html ac-html-angular tern-django tern-auto-complete company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

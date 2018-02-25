@@ -18,16 +18,14 @@
   (elpy-mode)
 
   ;; Don't use auto-complete
-  (setq elpy-default-minor-modes (delete 'auto-complete elpy-default-minor-modes))
+  ;; (setq elpy-default-minor-modes (delete 'auto-complete elpy-default-minor-modes))
 
   ;; Jedi backend                                                                                      
   (jedi:setup)
   (setq jedi:complete-on-dot t) ;optional                                                               
 
-  (defun my/python-mode-hook ()
-    (add-to-list 'company-backends 'company-jedi))
-
-  (add-hook 'python-mode-hook 'my/python-mode-hook)
+  (add-to-list 'company-backends 'company-jedi)
+  (setq helm-dash-docsets '("Python 3" "Django"))
 
   ;; needed to use ipython as python shell in Emacs
   (setq python-shell-interpreter "ipython"
@@ -41,14 +39,4 @@
 
 (add-hook 'python-mode-hook (lambda ()
                               (run-hooks 'personal-python-mode-hook)))
-
-
-;; ;; EIN
-;; (package-initialize)
-;; (require 'ein)
-;; (require 'ein-loaddefs)
-;; (require 'ein-notebook)
-;; (require 'ein-subpackages)
-;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-
 
