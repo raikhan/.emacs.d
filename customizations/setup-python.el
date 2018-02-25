@@ -18,7 +18,7 @@
   (elpy-mode)
 
   ;; Don't use auto-complete
-  ;; (setq elpy-default-minor-modes (delete 'auto-complete elpy-default-minor-modes))
+  (setq elpy-default-minor-modes (delete 'auto-complete elpy-default-minor-modes))
 
   ;; Jedi backend                                                                                      
   (jedi:setup)

@@ -157,13 +157,11 @@
 (load "Rmarkdown.el")
 (load "setup-R.el")
 (load "setup-python.el")
-(load "setup-js.el")  ;; Javascript
+(load "setup-js.el")   ;; Javascript
 (load "setup-web.el")  ;; HTML/CSS
-;; html/css
 ;; c/c++
 ;; clojure
 ;; scala
-
 
 
 
@@ -216,7 +214,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (js3-mode helm-dash ac-html-csswatcher ac-html-bootstrap ac-html ac-html-angular tern-django tern-auto-complete company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+    (helm-emmet js3-mode helm-dash ac-html-csswatcher ac-html-bootstrap ac-html ac-html-angular tern-django tern-auto-complete company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
