@@ -93,7 +93,10 @@
     skewer-mode
     indium
     company-tern
-   
+
+    ;; Emacs browser - w3m
+    w3m
+    helm-w3m
 
     ;; ;; Clojure
     ;; clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
@@ -204,6 +207,15 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+;;
+;; Browsing in Emacs with w3m
+;;
+(setq browse-url-browser-function 'w3m-browse-url)
+(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;; optional keyboard short-cut
+(global-set-key "\C-xm" 'browse-url-at-point)
+(setq w3m-use-cookies t)
+
 
 ;; automatically refresh files that changed on disk
 (global-auto-revert-mode t)
@@ -214,7 +226,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-emmet js3-mode helm-dash ac-html-csswatcher ac-html-bootstrap ac-html ac-html-angular tern-django tern-auto-complete company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
+    (helm-w3m helm-emmet js3-mode helm-dash ac-html-csswatcher ac-html-bootstrap ac-html ac-html-angular tern-django tern-auto-complete company-tern company-web helm-company company-jedi indium impatient-mode web-mode emmet-mode js2-refactor js2-highlight-vars jedi elpy golden-ratio helm-projectile helm rainbow-delimiters projectile polymode paredit multiple-cursors markdown-mode magit key-chord flycheck expand-region exec-path-from-shell clojure-mode-extra-font-locking cider auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

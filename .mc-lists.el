@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         paredit-kill
+        web-mode-element-close
         ))
 
 (setq mc/cmds-to-run-once
