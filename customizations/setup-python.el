@@ -7,31 +7,22 @@
 ;; when reinstalling this setup
 ;;
 
-;; Using elpy for now (switch to anaconda-mode maybe?)
-(elpy-enable)
-
 ;; setup personal python mode
 (defun personal-python-mode-defaults ()
   "Personal defaults for Python programming."
+  (interactive)
+
+  ;; Using elpy for now (switch to anaconda-mode maybe?)
+  (elpy-enable)
 
   ;; Enable elpy mode
   (elpy-mode)
 
-  ;; Don't use auto-complete
-  (setq elpy-default-minor-modes (delete 'auto-complete elpy-default-minor-modes))
-
-  ;; Jedi backend                                                                                      
-  (jedi:setup)
-  (setq jedi:complete-on-dot t) ;optional                                                               
-
-  (add-to-list 'company-backends 'company-jedi)
-  (setq-local helm-dash-docsets '("Python 3" "Django"))
+  (setq-local helm-dash-docsets '("Python_3" "Django"))
 
   ;; needed to use ipython as python shell in Emacs
   (setq python-shell-interpreter "ipython"
         python-shell-interpreter-args "-i --simple-prompt")
-
-  (setq elpy-rpc-backend "jedi")
 
   )
 
@@ -39,4 +30,15 @@
 
 (add-hook 'python-mode-hook (lambda ()
                               (run-hooks 'personal-python-mode-hook)))
+
+;; fix for elpy native-completion problem
+(with-eval-after-load 'python
+  (defun python-shell-completion-native-try ()
+    "Return non-nil if can trigger native completion."
+    (let ((python-shell-completion-native-enable t)
+          (python-shell-completion-native-output-timeout
+           python-shell-completion-native-try-output-timeout))
+      (python-shell-completion-native-get-completions
+       (get-buffer-process (current-buffer))
+       nil "_"))))
 
