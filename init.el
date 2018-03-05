@@ -94,6 +94,9 @@
     indium
     company-tern
 
+    ;; SQL
+    sqlup-mode
+
     ;; ;; Clojure
     ;; clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
     ;; clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
@@ -158,6 +161,7 @@
 (load "setup-python.el")
 (load "setup-js.el")   ;; Javascript
 (load "setup-web.el")  ;; HTML/CSS
+(load "setup-SQL.el") 
 ;; c/c++
 ;; clojure
 ;; scala
@@ -217,10 +221,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote browse-url-default-browser))
-
  '(package-selected-packages
    (quote
-    (web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
+    (sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

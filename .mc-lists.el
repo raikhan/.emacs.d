@@ -3,10 +3,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        kill-region
         paredit-kill
         web-mode-element-close
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        elpy-shell-send-statement-and-step
         ))
