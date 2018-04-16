@@ -14,6 +14,13 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 
+;; Associate engines for web mode
+(setq web-mode-engines-alist
+      '(("php"    . "\\.phtml\\'")
+        ("blade"  . "\\.blade\\.")
+        ("django" . "\\.html\\."))
+)
+
 ;; Load company mode for HTML
 (require 'company-web-html)                  
 ;; (add-to-list 'company-backends 'company-web-html)        

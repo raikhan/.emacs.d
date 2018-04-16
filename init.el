@@ -97,6 +97,9 @@
     ;; SQL
     sqlup-mode
 
+    ;; Debugging
+    realgud
+
     ;; ;; Clojure
     ;; clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
     ;; clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
@@ -223,7 +226,7 @@
  '(browse-url-browser-function (quote browse-url-default-browser))
  '(package-selected-packages
    (quote
-    (sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
+    (realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
