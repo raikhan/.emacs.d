@@ -4,14 +4,9 @@
 (setq mc/cmds-to-run-for-all
       '(
         delete-horizontal-space
-        ess-yank
-        indent-for-tab-command
         kill-region
-        paredit-kill
-        web-mode-element-close
         ))
 
 (setq mc/cmds-to-run-once
       '(
-        elpy-shell-send-statement-and-step
         ))

@@ -68,7 +68,7 @@
     expand-region
     key-chord
     golden-ratio
-    ace-jump-mode
+    avy
 
     ;; R
     ;; ESS loaded automatically in modified Emacs 
@@ -175,6 +175,9 @@
 ;; General packages setup
 ;;
 
+;; RealGUD for connecting to debuggers
+(require 'realgud)
+
 ;; use company-mode for autocompletion
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)     ; use globally
@@ -226,7 +229,9 @@
  '(browse-url-browser-function (quote browse-url-default-browser))
  '(package-selected-packages
    (quote
-    (realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
+    (avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
+ '(realgud:ipdb-command-name "ipdb3")
+ '(realgud:pdb-command-name "python -m pdb"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
