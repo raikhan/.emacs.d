@@ -4,6 +4,8 @@
 (setq mc/cmds-to-run-for-all
       '(
         delete-horizontal-space
+        eval-expression
+        helm-show-kill-ring
         kill-region
         ))
 

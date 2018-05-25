@@ -11,3 +11,5 @@ auto-save-list/
 network-security.data
 ac-html-csswatcher/
 semanticdb/
+request/
+projectile.cache
