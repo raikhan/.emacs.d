@@ -20,57 +20,24 @@
 (setq recentf-max-menu-items 40)
 
 
-;; ido-mode allows you to more easily navigate choices. For example,
-;; when you want to switch buffers, ido presents you with a list
-;; of buffers in the the mini-buffer. As you start to type a buffer's
-;; name, ido will narrow down the list of buffers to match the text
-;; you've typed in
-;; http://www.emacswiki.org/emacs/InteractivelyDoThings
-(ido-mode t)
-
-;; This allows partial matches, e.g. "tl" will match "Tyrion Lannister"
-(setq ido-enable-flex-matching t)
-
-;; Turn this behavior off because it's annoying
-(setq ido-use-filename-at-point nil)
-
-;; Don't try to match file across all "work" directories; only match files
-;; in the current directory displayed in the minibuffer
-(setq ido-auto-merge-work-directories-length -1)
-
-;; Includes buffer names of recently open files, even if they're not
-;; open now
-(setq ido-use-virtual-buffers t)
-
-;; This enables ido in all contexts where it could be useful, not just
-;; for selecting buffer and file names
-(ido-ubiquitous-mode 1)
-
 ;; Shows a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
-;; Enhances M-x to allow easier execution of commands. Provides
-;; a filterable list of possible commands in the minibuffer
-;; http://www.emacswiki.org/emacs/Smex
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-
-;; projectile everywhere!
+;; projectile everywhere + using helm-projectile
 (projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
 
-;; Milan - my navigation additions
+;; My navigation additions
 
-;; Change windows with C-tab
-(global-set-key [C-tab] 'other-window)
 
 ;; comment / uncomment code
 (global-set-key (kbd "C-S-d") 'comment-or-uncomment-region)
 
-;; set just-one-space to M-\ (replacing delete-horizontal-space)
-(global-set-key (kbd "M-\\") 'just-one-space)
+;; ;; set just-one-space to M-\ (replacing delete-horizontal-space)
+;; (global-set-key (kbd "M-\\") 'just-one-space) 
 
 ;; move cursor to minibuffer
 (defun switch-to-minibuffer ()
@@ -161,11 +128,11 @@
 ;;
 ;; expand-region setup
 ;;
-(require `expand-region)
+(require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; package to swap buffers between windows
-(require `buffer-move)
+;; ;; package to swap buffers between windows
+;; (require `buffer-move)
 
 
 ;;
@@ -182,9 +149,103 @@
            (insert (current-kill 0)))))
 (global-set-key (kbd "C-c e") 'eval-and-replace)
 
-;; ace jump mode - for fast cursor movement
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c C-SPC" ) 'ace-jump-mode)
+;; start key-chord mode
+(require 'key-chord)
+(key-chord-mode 1)
 
 
+;; avy - an advanced ace-jump mode
+(avy-setup-default)
+(global-set-key (kbd "C-'") 'avy-goto-char-timer)
+(global-set-key (kbd "C-z") 'avy-goto-char)
+
+
+;;
+;; Helm setup
+;;
+(require 'helm)
+(require 'helm-config)
+
+;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+(when (executable-find "curl")
+  (setq helm-google-suggest-use-curl-p t))
+
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t
+      helm-echo-input-in-header-line t)
+
+(defun spacemacs//helm-hide-minibuffer-maybe ()
+  "Hide minibuffer in Helm session if we use the header line as input field."
+  (when (with-helm-buffer helm-echo-input-in-header-line)
+    (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
+      (overlay-put ov 'window (selected-window))
+      (overlay-put ov 'face
+                   (let ((bg-color (face-background 'default nil)))
+                     `(:background ,bg-color :foreground ,bg-color)))
+      (setq-local cursor-type nil))))
+
+
+(add-hook 'helm-minibuffer-set-up-hook
+          'spacemacs//helm-hide-minibuffer-maybe)
+
+(setq helm-autoresize-max-height 0)
+(setq helm-autoresize-min-height 30)
+(helm-autoresize-mode 1)
+
+;;
+;; Settings from http://tuhdo.github.io/helm-intro.html
+;;
+(global-set-key (kbd "M-x") 'helm-M-x)
+(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
+
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; Helm-mini
+(global-set-key (kbd "C-x b") 'helm-mini)
+
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+
+;; imenu / semantic mode for extracting coding tags from text (find functions/ variables etc)
+;; Opens with C-c h i   (C-c h is the Helm prefix)
+(semantic-mode 1)
+
+(setq helm-semantic-fuzzy-match t
+
+      helm-imenu-fuzzy-match    t)
+
+;; menu for mark ring
+(global-set-key (kbd "C-c SPC") 'helm-all-mark-rings)
+
+;; for google search in helm
+(global-set-key (kbd "C-c h g") 'helm-google-suggest)
+
+;; helm eshell history
+(require 'helm-eshell)
+
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
+
+;; regular shell history (M-x shell)
+(define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
+
+(helm-mode 1)
 

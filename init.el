@@ -4,24 +4,18 @@
 
 ;; Define package repositories
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ;; ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("melpa-stable" . "https://stable.melpa.org/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/"))
+      package-archive-priorities
+      '(("melpa-stable" . 10)
+        ("gnu"     . 5)
+        ("melpa"        . 0)))
 
 ;; manually downloaded packages
 (add-to-list 'load-path "~/.emacs.d/packages/")
-
-;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                          ("melpa" . "http://melpa-stable.milkbox.net/packages/")))
-
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -35,10 +29,6 @@
   (package-refresh-contents))
 
 
-;; load exec-path-from-shell package
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-
 ;; The packages you want installed. You can also install these
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
@@ -47,71 +37,76 @@
     ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
     paredit
 
-    ;; key bindings and code colorization for Clojure
-    ;; https://github.com/clojure-emacs/clojure-mode
-    clojure-mode
-
-    ;; extra syntax highlighting for clojure
-    clojure-mode-extra-font-locking
-
-    ;; integration with a Clojure REPL
-    ;; https://github.com/clojure-emacs/cider
-    cider
-
-    ;; allow ido usage in as many contexts as possible. see
-    ;; customizations/navigation.el line 23 for a description
-    ;; of ido
-    ido-ubiquitous
-
-    ;; Enhances M-x to allow easier execution of commands. Provides
-    ;; a filterable list of possible commands in the minibuffer
-    ;; http://www.emacswiki.org/emacs/Smex
-    smex
-
+    ;; Smart navigation with Helm
+    helm
+    helm-projectile
+    helm-dash  ;; Dash documentation
+   
     ;; project navigation
     projectile
 
     ;; colorful parenthesis matching
     rainbow-delimiters
 
-    ;; edit html tags like sexps
-    tagedit
-
     ;; git integration
     magit
 
-    ;; multiple cursors
-    multiple-cursors
+    ;; ;; auto complete
+    ;; auto-complete
 
-    ;; ace jump mode (jump to specific character)
-    ace-jump-mode
-
-    ;; expand region
-    expand-region
-
-    ;; buffer move
-    buffer-move
-
-    ;; key chords
-    key-chord
-
-    ;; poly mode (for R markdown)
-    polymode
-
-    ;; auto complete
-    auto-complete
+    ;; company mode
+    company
 
     ;; markdown major mode 
     markdown-mode
 
-    ;; ELPY python mode
-    elpy
-
-    ;; emacs jupyter notebook
-    ein
-
     ;; flycheck syntax checker
-    flycheck))
+    flycheck
+
+    ;; Minor navigation/UI packages
+    multiple-cursors
+    expand-region
+    key-chord
+    golden-ratio
+    avy
+
+    ;; R
+    ;; ESS loaded automatically in modified Emacs 
+    polymode     ;; for R markdown
+
+
+    ;; Python
+    elpy
+    jedi
+
+    ;; HTML/CSS
+    web-mode
+    emmet-mode
+    impatient-mode
+    company-web
+    ac-html-csswatcher
+    ac-html-bootstrap
+
+    ;; JavaScript
+    js2-mode
+    js2-refactor
+    skewer-mode
+    indium
+    company-tern
+
+    ;; SQL
+    sqlup-mode
+
+    ;; Debugging
+    realgud
+
+    ;; ;; Clojure
+    ;; clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
+    ;; clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
+    ;; cider ;; integration with a Clojure REPL
+
+    ))
+
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -124,35 +119,24 @@
 (if (eq system-type 'darwin)
     (add-to-list 'my-packages 'exec-path-from-shell))
 
+
+;; install or update my-packages
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-
-
-;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
-;; to load them.
-;;
-;; For example, if you download yaml-mode.el to ~/.emacs.d/vendor,
-;; then you can add the following code to this file:
-;;
-;; (require 'yaml-mode)
-;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;; 
-;; Adding this code will make Emacs enter yaml mode whenever you open
-;; a .yml file
-(add-to-list 'load-path "~/.emacs.d/vendor")
 
 
 ;;;;
 ;; Customization
 ;;;;
 
+
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
-;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; environment variables
+;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; ;; environment variables
 (load "shell-integration.el")
 
 ;; These customizations make it easier for you to navigate files,
@@ -172,49 +156,44 @@
 ;; For editing lisps
 (load "elisp-editing.el")
 
-;; Langauage-specific
-(load "setup-clojure.el")
-(load "setup-js.el")
-(load "setup-R.el") ;; Milan
-(load "Rmarkdown.el") ;; Milan
-(load "setup-python.el") ;; Milan
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(coffee-tab-width 2)
- '(menu-bar-mode nil)
- '(package-selected-packages
-   (quote
-    (ac-js2 xref-js2 js2-mode ensime indium markdown-mode auto-complete polymode key-chord buffer-move expand-region ace-jump-mode multiple-cursors magit tagedit rainbow-delimiters projectile smex ido-ubiquitous cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell)))
- '(show-paren-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;;
+;; Customizations for individual languages
+;;
+(load "Rmarkdown.el")
+(load "setup-R.el")
+(load "setup-python.el")
+(load "setup-js.el")   ;; Javascript
+(load "setup-web.el")  ;; HTML/CSS
+(load "setup-SQL.el") 
+;; c/c++
+;; clojure
+;; scala
+
+
 
 ;;
-;; Milan
+;; General packages setup
 ;;
 
-;; set new font size
-(set-face-attribute 'default nil :height 200)
+;; RealGUD for connecting to debuggers
+(require 'realgud)
 
-;; Mac only - swap Alt and Cmd
-(setq mac-command-modifier 'meta)
-(setq Mac-option-modifier 'super)
+;; use company-mode for autocompletion
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)     ; use globally
 
-;; Start with maximized window
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; company-mode settings
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
+(setq company-idle-delay .2)                         ; decrease delay before autocompletion popup shows
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+(setq company-minimum-prefix-length 1)               ; show options after second character
+(global-set-key (kbd "C-c /") 'company-files)        ; Force complete file names on "C-c /" key
 
-;; auto-complete setup
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
+;; ;; auto-complete setup
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 ;; (setq ac-delay 0.1)
 ;; (setq ac-auto-show-menu 0.2)
 ;; (setq ac-quick-help-delay 0.2)
@@ -227,7 +206,6 @@
 ;;
 ;; Org mode key bindings
 ;;
-
 (setq org-log-done 'time)    ;; leave timestamp when set to DONE
 
 (global-set-key "\C-cl" 'org-store-link)
@@ -236,21 +214,27 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 
+;; automatically refresh files that changed on disk
+(global-auto-revert-mode t)
+
 ;;
-;; Scala
+;; Automatic
 ;;
 
-;; Scala mode ENSIME
-(require 'use-package)
-(use-package ensime
-  :ensure t
-  :pin melpa-stable)
-
-;; add sbt to path
-(add-to-list 'exec-path "/usr/local/bin")
-
-;; remove welcome screen
-(setq ensime-startup-notification nil)
-
-;; hook to start ensime-mode when scala-mode starts
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(browse-url-browser-function (quote browse-url-default-browser))
+ '(package-selected-packages
+   (quote
+    (avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
+ '(realgud:ipdb-command-name "ipdb3")
+ '(realgud:pdb-command-name "python -m pdb"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -3,36 +3,27 @@
 ;;
 
 ;;
-;; Elpy
+;; Don't forget to install jedi server (M-X jedi:install-server) 
+;; when reinstalling this setup
 ;;
-
-;; set PATH inside Emacs (should be done before loading elpy
-(exec-path-from-shell-copy-env "PATH")
-
-;; enable elpy mode for Python
-(elpy-enable)
-
-(setq elpy-rpc-backend "jedi")
-
-;; setup IPython as Python console shell
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
 
 ;; setup personal python mode
 (defun personal-python-mode-defaults ()
   "Personal defaults for Python programming."
+  (interactive)
+
+  ;; Using elpy for now (switch to anaconda-mode maybe?)
+  (elpy-enable)
+
   ;; Enable elpy mode
   (elpy-mode)
-  ;; Jedi backend                                                                                       
-  (jedi:setup)
-  (setq jedi:complete-on-dot t) ;optional                                                               
-  (auto-complete-mode)
-  (jedi:ac-setup)
 
-  (flycheck-mode)
+  (setq-local helm-dash-docsets '("Python_3" "Django"))
 
-  (setq elpy-rpc-python-command "python3") 
-  (python-shell-interpreter "ipython3")
+  ;; needed to use ipython as python shell in Emacs
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i --simple-prompt")
+
   )
 
 (setq personal-python-mode-hook 'personal-python-mode-defaults)
@@ -40,13 +31,14 @@
 (add-hook 'python-mode-hook (lambda ()
                               (run-hooks 'personal-python-mode-hook)))
 
-
-;; ;; EIN
-;; (package-initialize)
-;; (require 'ein)
-;; (require 'ein-loaddefs)
-;; (require 'ein-notebook)
-;; (require 'ein-subpackages)
-;; (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-
+;; fix for elpy native-completion problem
+(with-eval-after-load 'python
+  (defun python-shell-completion-native-try ()
+    "Return non-nil if can trigger native completion."
+    (let ((python-shell-completion-native-enable t)
+          (python-shell-completion-native-output-timeout
+           python-shell-completion-native-try-output-timeout))
+      (python-shell-completion-native-get-completions
+       (get-buffer-process (current-buffer))
+       nil "_"))))
 

@@ -1,35 +1,41 @@
-;; javascript / html
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
-(add-hook 'js-mode-hook 'subword-mode)
-(add-hook 'html-mode-hook 'subword-mode)
-(setq js-indent-level 2)
-(eval-after-load "sgml-mode"
-  '(progn
-     (require 'tagedit)
-     (tagedit-add-paredit-like-keybindings)
-     (add-hook 'html-mode-hook (lambda () (tagedit-mode 1)))))
+;;
+;; javascript
+;;
 
-
-;; coffeescript
-(add-to-list 'auto-mode-alist '("\\.coffee.erb$" . coffee-mode))
-(add-hook 'coffee-mode-hook 'subword-mode)
-(add-hook 'coffee-mode-hook 'highlight-indentation-current-column-mode)
-(add-hook 'coffee-mode-hook
-          (defun coffee-mode-newline-and-indent ()
-            (define-key coffee-mode-map "\C-j" 'coffee-newline-and-indent)
-            (setq coffee-cleanup-whitespace nil)))
-(custom-set-variables
- '(coffee-tab-width 2))
-
-
-;; setup js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
 
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+;; ;; setup skewer-mode
+;; (require 'skewer-mode)
+;; (add-hook 'js2-mode-hook 'skewer-mode)
 
-;; start Indium and interatcion mode for JS files
+;; use indium interactively
 (require 'indium)
-(add-hook 'js2-mode-hook 'indium-interaction-mode)
+(add-hook 'js2-mode-hook #'indium-interaction-mode)
+
+;; ;; refactoring
+;; (require 'js2-refactor)
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (js2r-add-keybindings-with-prefix "C-c C-m")  ;; prefix
+;; (setq js2-skip-preprocessor-directives t)
+
+;; ;; for highlighting variable names
+;; NOTE - nice mode but breaks company-tern
+;; (eval-after-load "js2-highlight-vars-autoloads"
+;;   '(add-hook 'js2-mode-hook (lambda () (js2-highlight-vars-mode))))
+
+;; company mode setup to use Tern
+(require 'company-tern)
+
+(add-to-list 'company-backends 'company-tern)
+(add-hook 'js2-mode-hook (lambda ()
+                           (tern-mode)
+                           (company-mode)))
+
+;; dash docsets
+(defun js-dash-hook () 
+  (interactive)
+  (setq-local helm-dash-docsets '("Javascript" "NodeJS" "UnderscoreJS")))
+(add-hook 'js2-mode-hook 'js-dash-hook)
+
+
