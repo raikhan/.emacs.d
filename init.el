@@ -85,7 +85,7 @@
     impatient-mode
     company-web
     ac-html-csswatcher
-    ac-html-bootstrap
+;    ac-html-bootstrap
 
     ;; JavaScript
     js2-mode
