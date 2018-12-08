@@ -100,10 +100,10 @@
     ;; Debugging
     realgud
 
-    ;; ;; Clojure
-    ;; clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
-    ;; clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
-    ;; cider ;; integration with a Clojure REPL
+    ;; Clojure
+    clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
+    clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
+    cider ;; integration with a Clojure REPL
 
     ))
 

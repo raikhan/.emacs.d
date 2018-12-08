@@ -13,3 +13,4 @@ ac-html-csswatcher/
 semanticdb/
 request/
 projectile.cache
+/cider-history
