@@ -78,6 +78,7 @@
     ;; Python
     elpy
     jedi
+    ein
 
     ;; HTML/CSS
     web-mode
@@ -165,8 +166,8 @@
 (load "setup-js.el")   ;; Javascript
 (load "setup-web.el")  ;; HTML/CSS
 (load "setup-SQL.el") 
+(load "setup-clojure.el") 
 ;; c/c++
-;; clojure
 ;; scala
 
 

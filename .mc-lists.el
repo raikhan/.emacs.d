@@ -6,6 +6,7 @@
         delete-horizontal-space
         eval-expression
         helm-show-kill-ring
+        indent-for-tab-command
         kill-region
         ))
 
