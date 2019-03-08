@@ -4,14 +4,33 @@
 (setq mc/cmds-to-run-for-all
       '(
         delete-horizontal-space
+        electric-newline-and-maybe-indent
+        end-of-buffer
         ess-yank
+        helm-find-files
+        helm-show-kill-ring
         indent-for-tab-command
+        isearch-forward-regexp
         kill-region
+        org-delete-char
+        org-end-of-line
+        org-metaleft
+        org-self-insert-command
+        org-yank
         paredit-kill
         web-mode-element-close
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        abbrev-prefix-mark
+        ein:notebook-complete-dot
+        ein:worksheet-execute-cell
+        ein:worksheet-goto-next-input
+        ein:worksheet-kill-cell
+        ein:worksheet-merge-cell
         elpy-shell-send-statement-and-step
+        ignore
+        isearch-printing-char
+        query-replace
         ))

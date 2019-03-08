@@ -29,7 +29,7 @@
 (load-theme 'distinguished t)
 
 ;; set new font size
-(set-face-attribute 'default nil :height 200)
+(set-face-attribute 'default nil :height 120)
 
 ;; Mac only - swap Alt and Cmd
 (setq mac-command-modifier 'meta)
@@ -69,6 +69,10 @@
 
 ;; no bell
 (setq ring-bell-function 'ignore)
+
+;; use rainbow delimiters for all modes
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; ;; golden ratio - adjust size to maximize working window
 ;; (require 'golden-ratio)
