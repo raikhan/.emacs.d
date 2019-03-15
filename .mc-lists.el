@@ -17,6 +17,8 @@
         org-metaleft
         org-self-insert-command
         org-yank
+        paredit-backslash
+        paredit-forward-delete
         paredit-kill
         web-mode-element-close
         ))

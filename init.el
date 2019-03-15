@@ -69,14 +69,17 @@
     key-chord
     golden-ratio
     ace-jump-mode
+    avy
 
     ;; R
     ;; ESS loaded automatically in modified Emacs 
     polymode     ;; for R markdown
-
+    poly-R
+    poly-markdown
 
     ;; Python
     elpy
+    ein
 
     ;; HTML/CSS
     web-mode

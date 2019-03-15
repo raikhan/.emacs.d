@@ -1,7 +1,7 @@
 ;;
 ;; Set of functions to work with R chunk in R markdown files
 ;;
-
+(require 'polymode)
 
 ;; helper functions
 (defun rmd-search-backward-r-chunk (count)

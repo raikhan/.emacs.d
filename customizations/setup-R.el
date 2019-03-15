@@ -1,5 +1,5 @@
 ;; Setup R exe to use
-(setq-default inferior-R-program-name "C:\\Program Files\\Microsoft\\R Client\\R_SERVER\\bin\\R.exe")
+(setq-default inferior-R-program-name "C:\\Program Files\\R\\R-3.5.3\\bin\\x64\\R.exe")
 
 ;; magrittr pipe - type ">" twice quickly
 (key-chord-define-global ">>" " %>% ")
