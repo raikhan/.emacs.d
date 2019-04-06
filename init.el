@@ -28,6 +28,9 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; Use libressl installed with brew for MELPA certificate management
+(require 'gnutls)
+(add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
 
 ;; The packages you want installed. You can also install these
 ;; manually with M-x package-install
