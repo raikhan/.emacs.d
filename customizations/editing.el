@@ -72,6 +72,10 @@
 
 (setq electric-indent-mode nil)
 
+;; use special tool for indented blocks syntax (Python, YAML)
+(require 'indent-tools)
+(global-set-key (kbd "C-c i") 'indent-tools-hydra/body)
+
 
 
 

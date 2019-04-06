@@ -79,6 +79,7 @@
     elpy
     jedi
     ein
+    indent-tools
 
     ;; HTML/CSS
     web-mode
@@ -230,7 +231,7 @@
  '(browse-url-browser-function (quote browse-url-default-browser))
  '(package-selected-packages
    (quote
-    (avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
+    (indent-tools dockerfile-mode docker-compose-mode docker-api docker avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
  '(realgud:ipdb-command-name "ipdb3")
  '(realgud:pdb-command-name "python -m pdb"))
 (custom-set-faces
