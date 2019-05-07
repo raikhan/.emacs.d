@@ -76,6 +76,6 @@
 (require 'indent-tools)
 (global-set-key (kbd "C-c i") 'indent-tools-hydra/body)
 
-
-
+;; Overwrite selection with new typing
+(delete-selection-mode 1)
 
