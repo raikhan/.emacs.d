@@ -248,3 +248,9 @@
 (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
 
 (helm-mode 1)
+
+
+;; NeoTree setup
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
