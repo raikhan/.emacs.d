@@ -51,9 +51,9 @@
   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
 (global-set-key (kbd "C-;") 'toggle-comment-on-line)
 
-;; ;; yay rainbows!
-;; (require 'rainbow-delimiters)
-;; (global-rainbow-delimiters-mode t)
+;; yay rainbows!
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; use 2 spaces for tabs
 (defun die-tabs ()
@@ -72,11 +72,9 @@
 
 (setq electric-indent-mode nil)
 
-
-;; fancy tools for working with indentation formats (Python, YAML...)
+;; use special tool for indented blocks syntax (Python, YAML)
 (require 'indent-tools)
 (global-set-key (kbd "C-c i") 'indent-tools-hydra/body)
-
 
 ;; overwrite selection when typing
 (delete-selection-mode 1)

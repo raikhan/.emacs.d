@@ -28,6 +28,9 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; Use libressl installed with brew for MELPA certificate management
+(require 'gnutls)
+(add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
 
 ;; The packages you want installed. You can also install these
 ;; manually with M-x package-install
@@ -70,6 +73,13 @@
     golden-ratio
     ace-jump-mode
     avy
+    neotree
+
+    ;; file icons for neotree and dired mode
+    ;; don't forget to install all the fonts with
+    ;; M-x all-the-icons-install-fonts
+    all-the-icons
+    all-the-icons-dired
 
     ;; R
     ;; ESS loaded automatically in modified Emacs 
@@ -89,8 +99,7 @@
     emmet-mode
     impatient-mode
     company-web
-    ac-html-csswatcher
-    ac-html-bootstrap
+;    ac-html-bootstrap
 
     ;; JavaScript
     js2-mode
@@ -105,7 +114,7 @@
     ;; Debugging
     realgud
 
-    ;; ;; Clojure
+    ;; Clojure
     clojure-mode ;; https://github.com/clojure-emacs/clojure-mode
     clojure-mode-extra-font-locking     ;; extra syntax highlighting for clojure
     cider ;; integration with a Clojure REPL
@@ -179,6 +188,9 @@
 ;;
 ;; General packages setup
 ;;
+
+;; RealGUD for connecting to debuggers
+(require 'realgud)
 
 ;; use company-mode for autocompletion
 (require 'company)
