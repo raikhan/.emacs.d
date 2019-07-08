@@ -80,6 +80,9 @@
     ;; Python
     elpy
     ein
+    hydra  ;; needed by indent-tools
+    indent-tools
+
 
     ;; HTML/CSS
     web-mode
@@ -164,10 +167,10 @@
 (load "Rmarkdown.el")
 (load "setup-R.el")
 (load "setup-python.el")
-(load "setup-js.el")   ;; Javascript
-(load "setup-web.el")  ;; HTML/CSS
+;; (load "setup-js.el")   ;; Javascript
+;; (load "setup-web.el")  ;; HTML/CSS
 (load "setup-SQL.el") 
-(load "setup-clojure.el") 
+;; (load "setup-clojure.el") 
 ;; c/c++
 ;; scala
 
@@ -239,7 +242,7 @@
  '(org-agenda-files (quote ("~/work/agenda/weeky_plan.org")))
  '(package-selected-packages
    (quote
-    (csv-mode company-anaconda anaconda-mode avy jedi python ein realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
+    (ein csv-mode company-anaconda anaconda-mode avy jedi python realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -26,6 +26,7 @@
 (setq mc/cmds-to-run-once
       '(
         abbrev-prefix-mark
+        comment-or-uncomment-region
         ein:notebook-complete-dot
         ein:worksheet-execute-cell
         ein:worksheet-goto-next-input
@@ -34,5 +35,6 @@
         elpy-shell-send-statement-and-step
         ignore
         isearch-printing-char
+        paredit-doublequote
         query-replace
         ))

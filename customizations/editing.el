@@ -73,5 +73,13 @@
 (setq electric-indent-mode nil)
 
 
+;; fancy tools for working with indentation formats (Python, YAML...)
+(require 'indent-tools)
+(global-set-key (kbd "C-c i") 'indent-tools-hydra/body)
 
 
+;; overwrite selection when typing
+(delete-selection-mode 1)
+
+;; step through camel case
+(global-subword-mode 1)

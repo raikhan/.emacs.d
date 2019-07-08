@@ -29,7 +29,7 @@
 (load-theme 'distinguished t)
 
 ;; set new font size
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 150)
 
 ;; Mac only - swap Alt and Cmd
 (setq mac-command-modifier 'meta)
@@ -49,6 +49,7 @@
       ;; When one selects something in another program to paste it into Emacs,
       ;; but kills something in Emacs before actually pasting it,
       ;; this selection is gone unless this variable is non-nil
+
       save-interprogram-paste-before-kill t
 
       ;; Shows all options when running apropos. For more info,

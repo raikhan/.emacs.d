@@ -245,7 +245,7 @@
               (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
 
 ;; regular shell history (M-x shell)
-(define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
+;; (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
 
 (helm-mode 1)
 
