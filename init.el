@@ -82,7 +82,10 @@
 
     ;; R
     ;; ESS loaded automatically in modified Emacs 
+    ess
     polymode     ;; for R markdown
+    poly-R
+    poly-markdown
 
 
     ;; Python
@@ -128,8 +131,8 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
+;; (if (eq system-type 'darwin)
+;;     (add-to-list 'my-packages 'exec-path-from-shell))
 
 
 ;; install or update my-packages
@@ -149,7 +152,7 @@
 
 ;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; ;; environment variables
-(load "shell-integration.el")
+;; (load "shell-integration.el")
 
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
@@ -171,8 +174,8 @@
 ;;
 ;; Customizations for individual languages
 ;;
-(load "Rmarkdown.el")
 (load "setup-R.el")
+(load "Rmarkdown.el")
 (load "setup-python.el")
 (load "setup-js.el")   ;; Javascript
 (load "setup-web.el")  ;; HTML/CSS

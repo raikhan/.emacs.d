@@ -237,15 +237,15 @@
 ;; for google search in helm
 (global-set-key (kbd "C-c h g") 'helm-google-suggest)
 
-;; helm eshell history
-(require 'helm-eshell)
+;; ;; helm eshell history
+;; (require 'helm-eshell)
 
-(add-hook 'eshell-mode-hook
-          #'(lambda ()
-              (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
+;; (add-hook 'eshell-mode-hook
+;;           #'(lambda ()
+;;               (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
 
-;; regular shell history (M-x shell)
-(define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
+;; ;; regular shell history (M-x shell)
+;; (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
 
 (helm-mode 1)
 

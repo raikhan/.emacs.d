@@ -29,7 +29,7 @@
 (load-theme 'distinguished t)
 
 ;; set new font size
-(set-face-attribute 'default nil :height 200)
+(set-face-attribute 'default nil :height 160)
 
 ;; Mac only - swap Alt and Cmd
 (setq mac-command-modifier 'meta)
