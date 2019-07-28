@@ -131,8 +131,8 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-;; (if (eq system-type 'darwin)
-;;     (add-to-list 'my-packages 'exec-path-from-shell))
+(if (eq system-type 'darwin)
+    (add-to-list 'my-packages 'exec-path-from-shell))
 
 
 ;; install or update my-packages
@@ -150,9 +150,9 @@
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
-;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; ;; environment variables
-;; (load "shell-integration.el")
+;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; environment variables
+(load "shell-integration.el")
 
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
@@ -180,7 +180,7 @@
 (load "setup-js.el")   ;; Javascript
 (load "setup-web.el")  ;; HTML/CSS
 (load "setup-SQL.el") 
-(load "setup-clojure.el") 
+;; (load "setup-clojure.el") 
 ;; c/c++
 ;; scala
 
@@ -242,6 +242,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote browse-url-default-browser))
+ '(elpy-shell-echo-input t)
  '(package-selected-packages
    (quote
     (all-the-icons-dired all-the-icons neotree indent-tools dockerfile-mode docker-compose-mode docker-api docker avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))

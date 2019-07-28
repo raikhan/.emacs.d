@@ -21,8 +21,11 @@
   (setq-local helm-dash-docsets '("Python_3" "Django"))
 
   ;; needed to use ipython as python shell in Emacs
+  ;; NOTE: fixing rubish generated in ipython elpy terminal on MacOS
   (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "-i --simple-prompt")
+        python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i")  
+  ;; (setq python-shell-interpreter "ipython"
+  ;;       python-shell-interpreter-args "-i --simple-prompt")
 
   ;; Enable navigating autocompletion menu from company-mode with C-n and C-p
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
