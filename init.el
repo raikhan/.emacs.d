@@ -93,7 +93,7 @@
     jedi
     ein
     indent-tools
-    py-yapf
+    py-autopep8
 
     ;; HTML/CSS
     web-mode

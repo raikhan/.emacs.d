@@ -52,11 +52,11 @@
 
 ;; Enable flycheck in elpy
 (with-eval-after-load 'elpy
-  (when (load "flycheck" t t)
-    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode)
-    ;; use same prev/next shortcut as flymake
-    (define-key elpy-mode-map (kbd "C-c C-n") 'flycheck-next-error)
-    (define-key elpy-mode-map (kbd "C-c C-p") 'flycheck-previous-error))
-  (add-hook 'elpy-mode-hook 'py-yapf-enable-on-save))
+  ;; (when (load "flycheck" t t)
+  ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;   (add-hook 'elpy-mode-hook 'flycheck-mode)
+  ;;   ;; use same prev/next shortcut as flymake
+  ;;   (define-key elpy-mode-map (kbd "C-c C-n") 'flycheck-next-error)
+  ;;   (define-key elpy-mode-map (kbd "C-c C-p") 'flycheck-previous-error))
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
