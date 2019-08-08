@@ -83,15 +83,18 @@
 
     ;; R
     ;; ESS loaded automatically in modified Emacs 
+    ess
     polymode     ;; for R markdown
     poly-R
     poly-markdown
+
 
     ;; Python
     elpy
     ein
     hydra  ;; needed by indent-tools
     indent-tools
+    py-autopep8
 
 
     ;; HTML/CSS
@@ -173,8 +176,8 @@
 ;;
 ;; Customizations for individual languages
 ;;
-(load "Rmarkdown.el")
 (load "setup-R.el")
+(load "Rmarkdown.el")
 (load "setup-python.el")
 ;; (load "setup-js.el")   ;; Javascript
 ;; (load "setup-web.el")  ;; HTML/CSS

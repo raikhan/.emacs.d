@@ -19,8 +19,11 @@
   ;; (setq-local helm-dash-docsets '("Python_3" "Django"))
 
   ;; needed to use ipython as python shell in Emacs
+  ;; NOTE: fixing rubish generated in ipython elpy terminal on MacOS
   (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "-i --simple-prompt")
+        python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i")  
+  ;; (setq python-shell-interpreter "ipython"
+  ;;       python-shell-interpreter-args "-i --simple-prompt")
 
   ;; Enable navigating autocompletion menu from company-mode with C-n and C-p
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
@@ -45,15 +48,13 @@
        nil "_"))))
 
 
-;; anaconda-mode setup
-
-;; (add-hook 'python-mode-hook 'anaconda-mode)
-
-;; (define-key anaconda-mode-map (kbd "<tab>") 'anaconda-mode-complete)
-
-;; (eval-after-load "company"
-;;  '(add-to-list 'company-backends 'company-anaconda))
-
-;; EIN setup
-
+;; Enable flycheck in elpy
+(with-eval-after-load 'elpy
+  ;; (when (load "flycheck" t t)
+  ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;   (add-hook 'elpy-mode-hook 'flycheck-mode)
+  ;;   ;; use same prev/next shortcut as flymake
+  ;;   (define-key elpy-mode-map (kbd "C-c C-n") 'flycheck-next-error)
+  ;;   (define-key elpy-mode-map (kbd "C-c C-p") 'flycheck-previous-error))
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
