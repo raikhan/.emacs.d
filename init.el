@@ -130,8 +130,8 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
+;; (if (eq system-type 'darwin)
+;;     (add-to-list 'my-packages 'exec-path-from-shell))
 
 
 ;; install or update my-packages
@@ -151,7 +151,7 @@
 
 ;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; ;; environment variables
-(load "shell-integration.el")
+;; (load "shell-integration.el")
 
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
@@ -254,7 +254,7 @@
  '(org-agenda-files (quote ("~/work/agenda/weeky_plan.org")))
  '(package-selected-packages
    (quote
-    (ein csv-mode company-anaconda anaconda-mode avy jedi python realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
+    (ein csv-mode company-anaconda anaconda-mode avy jedi python realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
