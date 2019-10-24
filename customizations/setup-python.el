@@ -38,6 +38,9 @@
 (add-hook 'python-mode-hook (lambda ()
                               (run-hooks 'personal-python-mode-hook)))
 
+;; Use black for code formatting automatically on save
+(add-hook 'python-mode-hook 'blacken-mode)
+
 ;; fix for elpy native-completion problem
 (with-eval-after-load 'python
   (defun python-shell-completion-native-try ()
