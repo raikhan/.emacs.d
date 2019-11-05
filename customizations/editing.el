@@ -79,3 +79,5 @@
 ;; Overwrite selection with new typing
 (delete-selection-mode 1)
 
+;; step through camel case
+(global-subword-mode 1)
