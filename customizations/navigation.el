@@ -29,6 +29,9 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+;; define projectile mode map shortcut
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
 
 ;; My navigation additions
 
