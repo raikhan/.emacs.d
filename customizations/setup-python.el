@@ -36,6 +36,10 @@
 (add-hook 'python-mode-hook (lambda ()
                               (run-hooks 'personal-python-mode-hook)))
 
+;; Use black for code formatting automatically on save
+(add-hook 'python-mode-hook 'blacken-mode)
+
+
 ;; fix for elpy native-completion problem
 (with-eval-after-load 'python
   (defun python-shell-completion-native-try ()
@@ -56,5 +60,6 @@
   ;;   ;; use same prev/next shortcut as flymake
   ;;   (define-key elpy-mode-map (kbd "C-c C-n") 'flycheck-next-error)
   ;;   (define-key elpy-mode-map (kbd "C-c C-p") 'flycheck-previous-error))
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+  )
 

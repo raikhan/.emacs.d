@@ -7,7 +7,7 @@
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ;; ("marmalade" . "http://marmalade-repo.org/packages/")
-			 ("melpa-stable" . "https://stable.melpa.org/packages/")
+			 ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/"))
       package-archive-priorities
       '(("melpa-stable" . 10)
@@ -257,7 +257,7 @@
  '(org-agenda-files (quote ("~/work/agenda/weeky_plan.org")))
  '(package-selected-packages
    (quote
-    (ein csv-mode company-anaconda anaconda-mode avy jedi python realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
+    (blacken ein csv-mode company-anaconda anaconda-mode avy jedi python realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

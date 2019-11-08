@@ -81,3 +81,12 @@
 
 ;; step through camel case
 (global-subword-mode 1)
+
+;; Enclose selection in parenthesis/quotes
+;; standard parenthesis already mapped to M-(
+(global-set-key (kbd "M-[") 'insert-pair)
+(global-set-key (kbd "M-\"") 'insert-pair)
+(global-set-key (kbd "M-'") 'insert-pair)
+
+
+
