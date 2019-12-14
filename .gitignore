@@ -14,3 +14,4 @@ semanticdb/
 request/
 projectile.cache
 /cider-history
+/elpy/*
