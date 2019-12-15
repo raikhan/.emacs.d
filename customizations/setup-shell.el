@@ -41,7 +41,7 @@
     (pop-to-buffer (process-buffer (get-process "shell")) t))
 
   (define-key sh-mode-map (kbd  "C-<return>") 'sh-send-line-or-region-and-step)
-  (define-key sh-mode-map (kbd  "C-c s") 'sh-switch-to-process-buffer)
+  ;; (define-key sh-mode-map (kbd  "C-c s") 'sh-switch-to-process-buffer)
 
   )
 

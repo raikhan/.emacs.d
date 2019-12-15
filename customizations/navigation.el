@@ -260,12 +260,19 @@
 
 
 ;; Automatically search the web using s from: https://github.com/zquestz/s
-(defun web-search-using-s ()
-  (interactive)
-  (setq var (read-string "Enter query: "))
-  (shell-command (concat "s " var))
-)
+(defun web-search-using-s (searchq &optional provider)
+  "Do a web search using s command. Function modelled on the example from http://ergoemacs.org/emacs/elisp_universal_argument.html"
+  (interactive
+   (cond
+    ((equal current-prefix-arg nil) ; no C-u
+     (list (read-string "Enter query: ") ""))
+    (t ; any other combination of C-u
+     (list
+      (read-string "Enter query: " )
+      (concat " -p " (read-string "Enter provider: ")) 
+      ))))
+  ;; call s
+  (shell-command (concat "s " searchq provider))
+  )
 (global-set-key (kbd "C-c s") 'web-search-using-s)
-
-
 
