@@ -257,3 +257,15 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+
+;; Automatically search the web using s from: https://github.com/zquestz/s
+(defun web-search-using-s ()
+  (interactive)
+  (setq var (read-string "Enter query: "))
+  (shell-command (concat "s " var))
+)
+(global-set-key (kbd "C-c s") 'web-search-using-s)
+
+
+
