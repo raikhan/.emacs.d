@@ -36,7 +36,7 @@
 (setq Mac-option-modifier 'super)
 
 ;; Start with maximized window
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq ;; makes killing/yanking interact with the clipboard

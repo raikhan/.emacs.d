@@ -257,3 +257,24 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+
+;; Search Google using Firefox from Windows
+;; NOTE: could not get the s-search from main branch to work on Windows
+(defun replace-in-string (what with in)
+  (replace-regexp-in-string (regexp-quote what) with in nil 'literal))
+
+(defun web-search-using-s ()
+(interactive)
+(setq ff_query (read-string "Enter query: ") )
+(setq ff_cmd "cmd.exe /C C:\\\\Users\\\\raicevim\\\\scoop\\\\shims\\\\firefox.exe " )
+(shell-command
+ (concat
+  ff_cmd
+  "https://www.google.com/search?q="
+  (replace-in-string " " "+" ff_query)))
+)
+(global-set-key (kbd "C-c s") 'web-search-using-s)
+
+
+

@@ -44,6 +44,7 @@
     helm
     helm-projectile
     helm-dash  ;; Dash documentation
+    helm-ag
    
     ;; project navigation
     projectile
@@ -257,7 +258,7 @@
  '(org-agenda-files (quote ("~/work/agenda/weeky_plan.org")))
  '(package-selected-packages
    (quote
-    (blacken ein csv-mode company-anaconda anaconda-mode avy jedi python realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
+    (helm-ag blacken ein csv-mode company-anaconda anaconda-mode avy jedi python realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region elpy company-web company-tern company-jedi clojure-mode-extra-font-locking cider ace-jump-mode ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
