@@ -274,5 +274,16 @@
   ;; call s
   (shell-command (concat "s " searchq provider))
   )
+
+(defun web-search-current-region (beg end)
+  "Search the web for the string in the selected region"
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list nil nil)))
+  (if (and beg end)
+      (web-search-using-s (buffer-substring beg end))             
+    (message "Select region first!")))
+
 (global-set-key (kbd "C-c s") 'web-search-using-s)
+(global-set-key (kbd "C-S-c s") 'web-search-current-region)
 
