@@ -267,13 +267,14 @@
 (defun web-search-using-s ()
 (interactive)
 (setq ff_query (read-string "Enter query: ") )
-(setq ff_cmd "cmd.exe /C C:\\\\Users\\\\raicevim\\\\scoop\\\\shims\\\\firefox.exe " )
+(setq ff_cmd "/home/raicevim/go/bin/s -b firefox.exe " )
 (shell-command
  (concat
   ff_cmd
-  "https://www.google.com/search?q="
-  (replace-in-string " " "+" ff_query)))
+  ff_query
 )
+
+
 (global-set-key (kbd "C-c s") 'web-search-using-s)
 
 
