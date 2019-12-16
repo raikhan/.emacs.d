@@ -281,5 +281,9 @@
   )
 (global-set-key (kbd "C-c s") 'web-search-using-s)
 
+(defun web-search-current-region (start end)
+  (interactive "r")
+  (shell-command (concat "/home/raicevim/go/bin/s -b firefox.exe " (buffer-substring start end))))
+(global-set-key (kbd "C-S-c s") 'web-search-current-region)
 
 
