@@ -264,17 +264,21 @@
 (defun replace-in-string (what with in)
   (replace-regexp-in-string (regexp-quote what) with in nil 'literal))
 
-(defun web-search-using-s ()
-(interactive)
-(setq ff_query (read-string "Enter query: ") )
-(setq ff_cmd "/home/raicevim/go/bin/s -b firefox.exe " )
-(shell-command
- (concat
-  ff_cmd
-  ff_query
-)
-
-
+;; Automatically search the web using s from: https://github.com/zquestz/s
+(defun web-search-using-s (searchq &optional provider)
+  "Do a web search using s command. Function modelled on the example from http://ergoemacs.org/emacs/elisp_universal_argument.html"
+  (interactive
+   (cond
+    ((equal current-prefix-arg nil) ; no C-u
+     (list (read-string "Enter query: ") ""))
+    (t ; any other combination of C-u
+     (list
+      (read-string "Enter query: " )
+      (concat " -p " (read-string "Enter provider: ")) 
+      ))))
+  ;; call s
+  (shell-command (concat "/home/raicevim/go/bin/s -b firefox.exe " searchq provider))
+  )
 (global-set-key (kbd "C-c s") 'web-search-using-s)
 
 
