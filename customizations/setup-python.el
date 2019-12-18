@@ -29,6 +29,9 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 
+  ;; map python mode autocompletion to C-tab (made to be mod-tab in UHK)
+  (define-key python-mode-map (kbd "<C-tab>") 'completion-at-point)
+
   )
 
 (setq personal-python-mode-hook 'personal-python-mode-defaults)
@@ -38,6 +41,10 @@
 
 ;; Use black for code formatting automatically on save
 (add-hook 'python-mode-hook 'blacken-mode)
+
+;; disable company in python shell
+(add-hook 'inferior-python-mode-hook
+          (lambda () (company-mode -1)))
 
 
 ;; fix for elpy native-completion problem
