@@ -259,11 +259,6 @@
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 
-;; Search Google using Firefox from Windows
-;; NOTE: could not get the s-search from main branch to work on Windows
-(defun replace-in-string (what with in)
-  (replace-regexp-in-string (regexp-quote what) with in nil 'literal))
-
 ;; Automatically search the web using s from: https://github.com/zquestz/s
 (defun web-search-using-s (searchq &optional provider)
   "Do a web search using s command. Function modelled on the example from http://ergoemacs.org/emacs/elisp_universal_argument.html"
@@ -277,13 +272,22 @@
       (concat " -p " (read-string "Enter provider: ")) 
       ))))
   ;; call s
-  (shell-command (concat "/home/raicevim/go/bin/s -b firefox.exe " searchq provider))
+  (shell-command (concat "/home/raicevim/go/bin/s -b firefox.exe " 
+                         (message  
+                          (replace-regexp-in-string "(" "\\\\(" 
+                           (replace-regexp-in-string ")" "\\\\)" searchq)))
+                         provider))
   )
+
+(defun web-search-current-region (beg end)
+  "Search the web for the string in the selected region"
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list nil nil)))
+  (if (and beg end)
+      (web-search-using-s (buffer-substring beg end))             
+    (message "Select region first!")))
+
 (global-set-key (kbd "C-c s") 'web-search-using-s)
-
-(defun web-search-current-region (start end)
-  (interactive "r")
-  (shell-command (concat "/home/raicevim/go/bin/s -b firefox.exe " (buffer-substring start end))))
 (global-set-key (kbd "C-S-c s") 'web-search-current-region)
-
 
