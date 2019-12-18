@@ -74,6 +74,7 @@
     golden-ratio
     avy
     neotree
+    restart-emacs
 
     ;; file icons for neotree and dired mode
     ;; don't forget to install all the fonts with
@@ -257,7 +258,7 @@
  '(elpy-test-runner (quote elpy-test-pytest-runner))
  '(package-selected-packages
    (quote
-    (helm-ag bash-completion blacken py-yapf all-the-icons-dired all-the-icons neotree indent-tools dockerfile-mode docker-compose-mode docker-api docker avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
+    (restart-emacs helm-ag bash-completion blacken py-yapf all-the-icons-dired all-the-icons neotree indent-tools dockerfile-mode docker-compose-mode docker-api docker avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
  '(realgud:ipdb-command-name "ipdb3")
  '(realgud:pdb-command-name "python -m pdb"))
 (custom-set-faces
