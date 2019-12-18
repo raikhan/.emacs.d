@@ -32,6 +32,9 @@
   ;; map python mode autocompletion to C-tab (made to be mod-tab in UHK)
   (define-key python-mode-map (kbd "<C-tab>") 'completion-at-point)
 
+  ;; turn on mode to automatically close parentheses/quotes
+  (electric-pair-mode)
+
   )
 
 (setq personal-python-mode-hook 'personal-python-mode-defaults)
