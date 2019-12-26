@@ -14,6 +14,11 @@
 (define-key comint-mode-map [C-down] 'comint-next-matching-input-from-input)
 
 
+;; Enable navigating autocompletion menu from company-mode with C-n and C-p
+(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+
+
 ;; polymode for R markdown
 (require 'polymode)
 (require 'poly-R)
