@@ -287,3 +287,8 @@
 (global-set-key (kbd "C-c s") 'web-search-using-s)
 (global-set-key (kbd "C-S-c s") 'web-search-current-region)
 
+
+;; set up navigation with helm-swoop
+(global-unset-key (kbd "C-M-s"))
+(global-set-key (kbd "C-M-s") 'helm-swoop)
+

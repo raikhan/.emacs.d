@@ -4,9 +4,13 @@
 (setq mc/cmds-to-run-for-all
       '(
         delete-horizontal-space
+        electric-newline-and-maybe-indent
+        ess-yank
         eval-expression
         helm-show-kill-ring
         indent-for-tab-command
+        insert-pair
+        insert-parentheses
         kill-region
         ))
 
