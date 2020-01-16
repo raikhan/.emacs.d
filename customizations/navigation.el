@@ -291,3 +291,6 @@
 (global-set-key (kbd "C-c s") 'web-search-using-s)
 (global-set-key (kbd "C-S-c s") 'web-search-current-region)
 
+;; add projectile key to use helm-ag
+(global-set-key (kbd "C-c p s a") 'helm-ag)
+
