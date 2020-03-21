@@ -1,5 +1,11 @@
 ;; Customizations relating to editing a buffer.
 
+;; Turn on cua-mode for advanced rectangle selection
+(setq cua-rectangle-mark-key (kbd "C-x SPC"))
+(cua-selection-mode t)
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
 ;; Key binding to use "hippie expand" for text autocompletion
 ;; http://www.emacswiki.org/emacs/HippieExpand
 (global-set-key (kbd "M-/") 'hippie-expand)
