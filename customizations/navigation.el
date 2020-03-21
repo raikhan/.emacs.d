@@ -236,6 +236,8 @@
 
 ;; menu for mark ring
 (global-set-key (kbd "C-c SPC") 'helm-all-mark-rings)
+;; use a smaller size of the mark ring so it is more easy to manage with helm
+(setq mark-ring-max 3)
 
 ;; for google search in helm
 (global-set-key (kbd "C-c h g") 'helm-google-suggest)
