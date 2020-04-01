@@ -2,6 +2,10 @@
 ;; Packages
 ;;;;
 
+;; Increase the memory limits - hopefully will speed up Elpy (from https://github.com/emacs-lsp/lsp-mode#why)
+(setq gc-cons-threshold (* 1024 1024 100))
+(setq read-process-output-max (* 1024 1024))
+
 ;; Define package repositories
 (require 'package)
 
