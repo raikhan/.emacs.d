@@ -270,7 +270,7 @@
  '(org-clock-idle-time 5)
  '(package-selected-packages
    (quote
-    (pug-mode yaml-mode ag helm-swoop restart-emacs helm-ag bash-completion blacken py-yapf all-the-icons-dired all-the-icons neotree indent-tools dockerfile-mode docker-compose-mode docker-api docker avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
+    (log4j-mode pug-mode yaml-mode ag helm-swoop restart-emacs helm-ag bash-completion blacken py-yapf all-the-icons-dired all-the-icons neotree indent-tools dockerfile-mode docker-compose-mode docker-api docker avy realgud sqlup-mode web-mode tern-django tern-auto-complete rainbow-delimiters polymode paredit markdown-mode magit key-chord js3-mode js2-refactor js2-highlight-vars jedi indium impatient-mode helm-projectile helm-emmet helm-dash helm-company golden-ratio flycheck expand-region exec-path-from-shell ein company-web company-tern company-jedi clojure-mode-extra-font-locking cider ac-html-csswatcher ac-html-bootstrap ac-html-angular ac-html)))
  '(realgud:ipdb-command-name "ipdb3")
  '(realgud:pdb-command-name "python -m pdb"))
 (custom-set-faces

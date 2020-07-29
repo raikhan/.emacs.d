@@ -15,3 +15,4 @@ request/
 projectile.cache
 /cider-history
 /elpy/*
+/packages/log4j-mode.el

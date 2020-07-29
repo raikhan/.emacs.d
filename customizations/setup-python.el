@@ -43,6 +43,11 @@
 ;; Use black for code formatting automatically on save
 (add-hook 'python-mode-hook 'blacken-mode)
 
+;; disable company in python shell
+(add-hook 'inferior-python-mode-hook
+          (lambda () (company-mode -1)))
+
+
 ;; fix for elpy native-completion problem
 (with-eval-after-load 'python
   (defun python-shell-completion-native-try ()
