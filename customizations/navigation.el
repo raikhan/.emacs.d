@@ -4,30 +4,38 @@
 ;;
 ;; Helm setup
 ;;
-(use-package helm
-  :ensure t
-  :preface (require 'helm-config)
-  :bind (("M-x" . helm-M-x)
-	 ("M-y" . helm-show-kill-ring)
-	 ("C-x C-f" . helm-find-files)
-	 
-	 )
+
+(use-package helm-config
+  :demand t
+  :after helm
   :init
+  (custom-set-variables '(helm-command-prefix-key "C-c h"))
+  :config
   ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
   ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
   ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-  (global-set-key (kbd "C-c h") 'helm-command-prefix)
-  (global-unset-key (kbd "C-x c"))
+  ;; (global-set-key (kbd "C-c h") 'helm-command-prefix)  
+  (global-unset-key (kbd "C-x c"))  
+)
 
+(use-package helm
+  :ensure t
+  :demand t
+  :bind (("M-x" . helm-M-x)
+	 ("M-y" . helm-show-kill-ring)
+	 ("C-x C-f" . helm-find-files)
+	 ("C-x b" . helm-mini)
+	 :map helm-map
+	 ("<tab>" . 'helm-execute-persistent-action)  ; rebind tab to run persistent action
+	 ("C-i" . 'helm-execute-persistent-action)  ; make TAB work in terminal
+	 ("C-z" . 'helm-select-action)  ; list actions using C-z
+	 )
   :config
+
   (helm-mode 1)
 )
 
 
-
-;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
-;; (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
 ;; (when (executable-find "curl")
 ;;   (setq helm-google-suggest-use-curl-p t))
@@ -60,21 +68,12 @@
 ;; ;;
 ;; ;; Settings from http://tuhdo.github.io/helm-intro.html
 ;; ;;
-;; (global-set-key (kbd "M-x") 'helm-M-x)
 ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 
-;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 ;; (setq helm-buffers-fuzzy-matching t
 ;;       helm-recentf-fuzzy-match    t)
 
-;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-;; ;; Helm-mini
-;; (global-set-key (kbd "C-x b") 'helm-mini)
-
-;; (setq helm-buffers-fuzzy-matching t
-;;       helm-recentf-fuzzy-match    t)
 
 ;; ;; imenu / semantic mode for extracting coding tags from text (find functions/ variables etc)
 ;; ;; Opens with C-c h i   (C-c h is the Helm prefix)
@@ -91,7 +90,7 @@
 
 ;; ;; for google search in helm
 ;; (global-set-key (kbd "C-c h g") 'helm-google-suggest)
-
+nn
 
 
 ;; ;; "When several buffers visit identically-named files,
