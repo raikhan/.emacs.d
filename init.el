@@ -1,10 +1,6 @@
 ;;;;
-;; Packages
+;; My Emacs setup
 ;;;;
-
-;; Mac only - swap Alt and Cmd
-(setq mac-command-modifier 'meta)
-(setq Mac-option-modifier 'super)
 
 ;; Define package repositories
 (require 'package)
@@ -19,7 +15,6 @@
 
 ;; manually downloaded packages
 (add-to-list 'load-path "~/.emacs.d/packages/")
-
 
 ;; Load and activate emacs packages. Do this first so that the
 ;; packages are loaded before you start trying to modify them.
@@ -36,58 +31,47 @@
 (require 'gnutls)
 (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
 
-;; The packages you want installed. You can also install these
-;; manually with M-x package-install
-;; Add in your own as you wish:
-(defvar my-packages
-  '(
-
-    ;; use-package - macro for loading packages: https://github.com/jwiegley/use-package
-    use-package
-    
-    ;; Smart navigation with Helm
-    ;; helm
-    ;; helm-ag
-    ;; helm-swoop ;; for effective search (https://github.com/emacsorphanage/helm-swoop)
-
-    ;; ;; project navigation
-    ;; helm-projectile
-    ;; projectile
-
-    ;; ;; git integration
-    ;; magit
-
-    ;; ;; company mode
-    ;; company
-
-    ))
+;; Prepare use-package. Install it if it is not present
+(eval-when-compile
+  (when (not (package-installed-p 'use-package))
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (require 'use-package))
 
 
-;; On OS X, an Emacs instance started from the graphical user
-;; interface will have a different environment than a shell in a
-;; terminal window, because OS X does not run a shell during the
-;; login. Obviously this will lead to unexpected results when
-;; calling external utilities like make from Emacs.
-;; This library works around this problem by copying important
-;; environment variables from the user's shell.
-;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (add-to-list 'my-packages 'exec-path-from-shell))
-(setenv "PATH" (concat (expand-file-name "~/.local/bin:") (getenv "PATH")))
+;; Mac only - swap Alt and Cmd
+(setq mac-command-modifier 'meta)
+(setq Mac-option-modifier 'super)
 
-;; install or update my-packages
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
 
-;; Turn on use-package
-(require 'use-package)
+;;;;
+;; Customization
+;;;;
+
+
+;; Add a directory to our load path so that when you `load` things
+;; below, Emacs knows where to look for the corresponding file.
+(add-to-list 'load-path "~/.emacs.d/customizations")
+
+;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; environment variables
+(load "shell-integration.el")
+
+;; These customizations make it easier for you to navigate files,
+;; switch buffers, and choose options from the minibuffer.
+(load "navigation.el")
+
+
+
+
+
+(put 'dired-find-alternate-file 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(exec-path-from-shell use-package)))
+ '(package-selected-packages '(use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
