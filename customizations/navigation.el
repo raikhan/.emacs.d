@@ -115,15 +115,21 @@
 (use-package avy
   :ensure t
   :bind
+  ("C-'" . avy-goto-char-timer)
   ("C-z" . avy-goto-char-timer)
   ;;("C-z" . avy-goto-char)
   :config
   (avy-setup-default)
 )
 
-;;
-;; Other packages
-;;
+;; NeoTree setup
+(use-package neotree
+  :ensure t
+  :bind
+  ([f8] . neotree-toggle)
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+)
 
 ;; "When several buffers visit identically-named files,
 ;; Emacs must give the buffers distinct names. The usual method
@@ -237,22 +243,6 @@
 
 
 
-
-
-;; ;;
-;; ;; eval-and-replace function (evaluate an elist expresion and replace it with its result)
-;; ;;
-;; (defun eval-and-replace ()
-;;   "Replace the preceding sexp with its value."
-;;   (interactive)
-;;   (backward-kill-sexp)
-;;   (condition-case nil
-;;       (prin1 (eval (read (current-kill 0)))
-;;              (current-buffer))
-;;     (error (message "Invalid expression")
-;;            (insert (current-kill 0)))))
-;; (global-set-key (kbd "C-c e") 'eval-and-replace)
-
 ;; ;; start key-chord mode
 ;; (require 'key-chord)
 ;; (key-chord-mode 1)
@@ -263,10 +253,6 @@
 
 
 
-;; ;; NeoTree setup
-;; (require 'neotree)
-;; (global-set-key [f8] 'neotree-toggle)
-;; (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 
 ;; ;; Automatically search the web using s from: https://github.com/zquestz/s
