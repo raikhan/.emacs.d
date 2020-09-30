@@ -11,12 +11,11 @@
 	 ("M-y" . helm-show-kill-ring)
 	 ("C-x C-f" . helm-find-files)
 	 ("C-x b" . helm-mini)
+	 ("C-c SPC" . helm-all-mark-rings)          ; helm menu for mark ring
 	 :map helm-map
-	 ("<tab>" . 'helm-execute-persistent-action) ; rebind tab to run persistent action
-	 ("C-i" . 'helm-execute-persistent-action)   ; make TAB work in terminal
-	 ("C-z" . 'helm-select-action)               ; list actions using C-z
-	 ("C-c SPC" . 'helm-all-mark-rings)          ; helm menu for mark ring
-	 ("C-c h g" . 'helm-google-suggest )         ; search web in helm using google
+	 ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+	 ("C-i" . helm-execute-persistent-action)   ; make TAB work in terminal
+	 ("C-z" . helm-select-action)               ; list actions using C-z
 	 )
   :config
   (when (executable-find "curl")
@@ -246,12 +245,6 @@
 ;; ;; start key-chord mode
 ;; (require 'key-chord)
 ;; (key-chord-mode 1)
-
-
-
-
-
-
 
 
 
