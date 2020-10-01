@@ -160,6 +160,8 @@
   ([f8] . neotree-toggle)
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-smart-open t)  ; always set the current file directory as root node
+  (setq projectile-switch-project-action 'neotree-projectile-action)  ; change root node when projectile changes projects
 )
 
 
