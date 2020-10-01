@@ -71,6 +71,11 @@
 ;; some user interface elements
 (load "ui.el")
 
+;; Variaty of additional small customizations
+(load "misc.el")
+
+;; Make sure that Emacs starts in the HOME directory
+(cd "~")
 
 
 (put 'dired-find-alternate-file 'disabled nil)
