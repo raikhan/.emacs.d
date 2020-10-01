@@ -259,7 +259,7 @@
                   (w2 (elt (window-list) (+ (% i numWindows) 1)))
 
                   (b1 (window-buffer w1))
-0                  (b2 (window-buffer w2))
+                  (b2 (window-buffer w2))
 
                   (s1 (window-start w1))
                   (s2 (window-start w2))
