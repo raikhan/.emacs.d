@@ -73,7 +73,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-command-prefix-key "C-c h")
  '(package-selected-packages
-   '(neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
+   '(helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
