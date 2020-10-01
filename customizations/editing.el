@@ -1,4 +1,6 @@
+;;
 ;; Customizations relating to editing a buffer.
+;;
 
 ;;;;
 ;; Selection
@@ -20,10 +22,10 @@
 ;; Don't use hard tabs
 (setq-default indent-tabs-mode nil)
 
-;; function to replace tabs in a buffer with 4 spaces
+;; function to replace tabs in a buffer with 2 spaces
 (defun die-tabs ()
   (interactive)
-  (set-variable 'tab-width 4)
+  (set-variable 'tab-width 2)
   (mark-whole-buffer)
   (untabify (region-beginning) (region-end))
   (keyboard-quit))
