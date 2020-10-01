@@ -86,7 +86,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-command-prefix-key "C-c h")
  '(package-selected-packages
-   '(paredit rainbow-delimiters all-the-icons-dired all-the-icons magit helm-ag indent-tools helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
+   '(company lsp-ui flycheck company-mode lsp-pyright paredit rainbow-delimiters all-the-icons-dired all-the-icons magit helm-ag indent-tools helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
