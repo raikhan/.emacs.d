@@ -71,7 +71,7 @@
   :after helm
   :bind
   (("M-i" . helm-swoop)
-  ("M-S-i" . helm-swoop-back-to-last-point)
+  ;; ("M-S-i" . helm-swoop-back-to-last-point) ; need to decide on a new keyboard shortcut, this one does not work
   ("C-c M-i" . helm-multi-swoop)
   ("C-x M-i" . helm-multi-swoop-all)
   :map isearch-mode-map
@@ -88,6 +88,10 @@
 	)
 )
 
+(use-package helm-ag
+  :ensure t
+  :after helm
+)
 
 ;;
 ;; Projectile

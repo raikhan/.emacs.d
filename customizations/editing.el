@@ -6,13 +6,12 @@
 
 ;; Turn on cua-mode for advanced rectangle selection
 (setq cua-rectangle-mark-key (kbd "C-x SPC"))
-(cua-selection-mode t)			     
-(cua-mode t)				     
-(setq cua-enable-cua-keys nil)		     
+(cua-selection-mode t)
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
 
 ;; Overwrite selection with new typing
 (delete-selection-mode 1)
-
 
 ;;;;
 ;; Tabs to spaces
@@ -56,7 +55,7 @@
 )
 
 ;;;;
-;; Parentheses
+;; Brackets and quotes
 ;;;;
 
 ;; Enclose selection in parenthesis/quotes
