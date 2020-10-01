@@ -41,10 +41,6 @@
 ;; set new font size
 (set-face-attribute 'default nil :height 160)
 
-;; Mac only - swap Alt and Cmd
-(setq mac-command-modifier 'meta)
-(setq Mac-option-modifier 'super)
-
 ;; Start with maximized window
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -85,7 +81,12 @@
 ;; (golden-ratio-mode 1)
 
 ;; turn on all-the-icons, fancy icons in dired
-(require 'all-the-icons)
-(require 'all-the-icons-dired)
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(use-package all-the-icons
+  :ensure t
+)
+(use-package all-the-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . all-the-icons-dired-mode)
+)
 
