@@ -46,9 +46,8 @@
   (define-key polymode-mode-map (kbd  "<M-down>") 'rmd-goto-next-r-chunk)
   (define-key polymode-mode-map (kbd  "<M-left>") 'rmd-goto-beginning-of-r-chunk)
   (define-key polymode-mode-map (kbd  "<M-right>") 'rmd-goto-end-of-r-chunk)
+)
 
-  ;; Use electric pair mode (automatically closes brackets and quotes)
-  (electric-pair-mode))
 
 ;; ESS - Emacs speaks statistics (installed in coding/libraries)
 (require 'ess-site)

@@ -7,7 +7,7 @@
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("melpa-stable" . "https://stable.melpa.org/packages/")
-			 ("melpa" . "http://melpa.milkbox.net/packages/"))
+			 ("melpa" . "https://melpa.org/packages/"))
       package-archive-priorities
       '(("melpa-stable" . 10)
         ("gnu"     . 5)
@@ -73,7 +73,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-command-prefix-key "C-c h")
  '(package-selected-packages
-   '(helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
+   '(indent-tools helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -4,6 +4,16 @@
 ;; a matter of preference and may require some fiddling to match your
 ;; preferences
 
+;; yay rainbows!
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; Highlights matching parenthesis
+(show-paren-mode 1)
+
+;; Highlight current line
+(global-hl-line-mode 1)
+
 ;; Turn off the menu bar at the top of each frame because it's distracting
 (menu-bar-mode -1)
 

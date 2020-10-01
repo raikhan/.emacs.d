@@ -186,6 +186,19 @@
 ;; Other functions and keyboard shortcuts
 ;;
 
+;; step through camel case
+(global-subword-mode 1)
+
+;; Interactive search key bindings. By default, C-s runs
+;; isearch-forward, so this swaps the bindings.
+(use-package isearch
+  :bind
+  ("C-s" . isearch-forward-regexp)
+  ("C-r" . isearch-backward-regexp)
+  ("C-M-s" . isearch-forward)
+  ("C-M-r" . isearch-backward)
+)
+
 ;; Shows a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
