@@ -16,3 +16,5 @@ projectile.cache
 /cider-history
 /elpy/*
 /packages/log4j-mode.el
+/.cache
+/.lsp-session-v1
