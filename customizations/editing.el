@@ -60,6 +60,11 @@
 ;; Brackets and quotes
 ;;;;
 
+;; Install paredit
+(use-package paredit
+  :ensure t
+)
+
 ;; Enclose selection in parenthesis/quotes
 ;; standard parenthesis already mapped to M-(
 (global-set-key (kbd "M-[") 'insert-pair)
