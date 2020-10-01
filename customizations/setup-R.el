@@ -1,3 +1,7 @@
+;; start key-chord mode
+(require 'key-chord)
+(key-chord-mode 1)
+
 ;; magrittr pipe - type ">" twice quickly
 (key-chord-define-global ">>" " %>% ")
 (key-chord-define-global "<<" " %<>% ")

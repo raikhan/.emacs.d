@@ -40,6 +40,7 @@
   (helm-mode 1)
 )
 
+
 (use-package helm-config
   :demand t
   :after helm
@@ -52,6 +53,7 @@
   ;; (global-set-key (kbd "C-c h") 'helm-command-prefix)  
   (global-unset-key (kbd "C-x c"))  
 )
+
 
 (use-package helm-eshell
   ;; use helm to show command history in eshell
@@ -75,6 +77,7 @@
   (setq projectile-completion-system 'helm)
   (projectile-global-mode)
 )
+
 
 (use-package helm-projectile
   ;; All projectile functions use a helm interface
@@ -108,6 +111,7 @@
   ("C-=" . er/expand-region)
 )
 
+
 ;;
 ;; Avy - an advanced ace-jump mode
 ;;
@@ -121,6 +125,7 @@
   (avy-setup-default)
 )
 
+
 ;; NeoTree setup
 (use-package neotree
   :ensure t
@@ -129,6 +134,7 @@
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 )
+
 
 ;; "When several buffers visit identically-named files,
 ;; Emacs must give the buffers distinct names. The usual method
@@ -141,6 +147,7 @@
   :config
   (setq uniquify-buffer-name-style 'forward)
 )
+
 
 ;; Turn on recent file mode so that you can more easily switch to
 ;; recently edited files when you first start emacs
@@ -162,9 +169,6 @@
 ;; comment / uncomment code
 (global-set-key (kbd "C-S-d") 'comment-or-uncomment-region)
 
-;; ;; set just-one-space to M-\ (replacing delete-horizontal-space)
-;; (global-set-key (kbd "M-\\") 'just-one-space)
-
 ;; ;; move cursor to minibuffer
 ;; (defun switch-to-minibuffer ()
 ;;   "Switch to minibuffer window."
@@ -175,106 +179,95 @@
 ;; (global-set-key "\C-c o" 'switch-to-minibuffer) ;; Bind to `C-c o'
 
 
+;; quick window switching (https://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el)
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
+
+(defun rotate-windows ()
+  "Rotate your windows"
+  (interactive)
+  (cond ((not (> (count-windows)1))
+         (message "You can't rotate a single window!"))
+        (t
+         (setq i 1)
+         (setq numWindows (count-windows))
+         (while  (< i numWindows)
+           (let* (
+                  (w1 (elt (window-list) i))
+                  (w2 (elt (window-list) (+ (% i numWindows) 1)))
+
+                  (b1 (window-buffer w1))
+                  (b2 (window-buffer w2))
+
+                  (s1 (window-start w1))
+                  (s2 (window-start w2))
+                  )
+             (set-window-buffer w1  b2)
+             (set-window-buffer w2 b1)
+             (set-window-start w1 s2)
+             (set-window-start w2 s1)
+             (setq i (1+ i)))))))
+
+(windmove-default-keybindings) ;; Shift+direction
+(global-set-key (kbd "C-x -") 'toggle-window-split)
+(global-set-key (kbd "C-x C--") 'rotate-windows)
 
 
-;; ;; quick window switching (https://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el)
-;; (defun toggle-window-split ()
-;;   (interactive)
-;;   (if (= (count-windows) 2)
-;;       (let* ((this-win-buffer (window-buffer))
-;;              (next-win-buffer (window-buffer (next-window)))
-;;              (this-win-edges (window-edges (selected-window)))
-;;              (next-win-edges (window-edges (next-window)))
-;;              (this-win-2nd (not (and (<= (car this-win-edges)
-;;                                          (car next-win-edges))
-;;                                      (<= (cadr this-win-edges)
-;;                                          (cadr next-win-edges)))))
-;;              (splitter
-;;               (if (= (car this-win-edges)
-;;                      (car (window-edges (next-window))))
-;;                   'split-window-horizontally
-;;                 'split-window-vertically)))
-;;         (delete-other-windows)
-;;         (let ((first-win (selected-window)))
-;;           (funcall splitter)
-;;           (if this-win-2nd (other-window 1))
-;;           (set-window-buffer (selected-window) this-win-buffer)
-;;           (set-window-buffer (next-window) next-win-buffer)
-;;           (select-window first-win)
-;;           (if this-win-2nd (other-window 1))))))
-
-;; (defun rotate-windows ()
-;;   "Rotate your windows"
-;;   (interactive)
-;;   (cond ((not (> (count-windows)1))
-;;          (message "You can't rotate a single window!"))
-;;         (t
-;;          (setq i 1)
-;;          (setq numWindows (count-windows))
-;;          (while  (< i numWindows)
-;;            (let* (
-;;                   (w1 (elt (window-list) i))
-;;                   (w2 (elt (window-list) (+ (% i numWindows) 1)))
-
-;;                   (b1 (window-buffer w1))
-;;                   (b2 (window-buffer w2))
-
-;;                   (s1 (window-start w1))
-;;                   (s2 (window-start w2))
-;;                   )
-;;              (set-window-buffer w1  b2)
-;;              (set-window-buffer w2 b1)
-;;              (set-window-start w1 s2)
-;;              (set-window-start w2 s1)
-;;              (setq i (1+ i)))))))
-
-;; (windmove-default-keybindings) ;; Shift+direction
-;; (global-set-key (kbd "C-x -") 'toggle-window-split)
-;; (global-set-key (kbd "C-x C--") 'rotate-windows)
+;; for Dired mode: use 'a' instead of RET when changing directories to prevent opening new buffers
+(put 'dired-find-alternate-file 'disabled nil)
 
 
-;; ;; for Dired mode: use 'a' instead of RET when chaning directories to prevent opening new buffers
-;; (put 'dired-find-alternate-file 'disabled nil)
+;; Automatically search the web using s from: https://github.com/zquestz/s
+(defun web-search-using-s (searchq &optional provider)
+  "Do a web search using s command. Function modelled on the example from http://ergoemacs.org/emacs/elisp_universal_argument.html"
+  (interactive
+   (cond
+    ((equal current-prefix-arg nil) ; no C-u
+     (list (read-string "Enter query: ") ""))
+    (t ; any other combination of C-u
+     (list
+      (read-string "Enter query: " )
+      (concat " -p " (read-string "Enter provider: ")) 
+      ))))
+  ;; call s
+  (shell-command (concat "s " searchq provider))
+  )
+
+(defun web-search-current-region (beg end)
+  "Search the web for the string in the selected region"
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list nil nil)))
+  (if (and beg end)
+      (web-search-using-s (buffer-substring beg end))             
+    (message "Select region first!")))
+
+(global-set-key (kbd "C-c s") 'web-search-using-s)
+(global-set-key (kbd "C-c C-s") 'web-search-current-region)
 
 
-;; ;; package to swap buffers between windows
-;; (require `buffer-move)
-
-
-
-;; ;; start key-chord mode
-;; (require 'key-chord)
-;; (key-chord-mode 1)
-
-
-
-;; ;; Automatically search the web using s from: https://github.com/zquestz/s
-;; (defun web-search-using-s (searchq &optional provider)
-;;   "Do a web search using s command. Function modelled on the example from http://ergoemacs.org/emacs/elisp_universal_argument.html"
-;;   (interactive
-;;    (cond
-;;     ((equal current-prefix-arg nil) ; no C-u
-;;      (list (read-string "Enter query: ") ""))
-;;     (t ; any other combination of C-u
-;;      (list
-;;       (read-string "Enter query: " )
-;;       (concat " -p " (read-string "Enter provider: ")) 
-;;       ))))
-;;   ;; call s
-;;   (shell-command (concat "s " searchq provider))
-;;   )
-
-;; (defun web-search-current-region (beg end)
-;;   "Search the web for the string in the selected region"
-;;   (interactive (if (use-region-p)
-;;                    (list (region-beginning) (region-end))
-;;                  (list nil nil)))
-;;   (if (and beg end)
-;;       (web-search-using-s (buffer-substring beg end))             
-;;     (message "Select region first!")))
-
-;; (global-set-key (kbd "C-c s") 'web-search-using-s)
-;; (global-set-key (kbd "C-S-c s") 'web-search-current-region)
 
 
 ;;;;
