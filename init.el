@@ -67,7 +67,9 @@
 ;; Packages and settings for coding in general, any programing language
 (load "coding.el")
 
-
+;; These customizations change the way emacs looks and disable/enable
+;; some user interface elements
+(load "ui.el")
 
 
 
@@ -79,7 +81,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-command-prefix-key "C-c h")
  '(package-selected-packages
-   '(all-the-icons-dired all-the-icons magit helm-ag indent-tools helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
+   '(rainbow-delimiters all-the-icons-dired all-the-icons magit helm-ag indent-tools helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -5,9 +5,10 @@
 ;; preferences
 
 ;; yay rainbows!
-(require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode)
+)
 ;; Highlights matching parenthesis
 (show-paren-mode 1)
 
@@ -39,7 +40,7 @@
 (load-theme 'distinguished t)
 
 ;; set new font size
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 150)
 
 ;; Start with maximized window
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -76,10 +77,6 @@
 ;; no bell
 (setq ring-bell-function 'ignore)
 
-;; ;; golden ratio - adjust size to maximize working window
-;; (require 'golden-ratio)
-;; (golden-ratio-mode 1)
-
 ;; turn on all-the-icons, fancy icons in dired
 (use-package all-the-icons
   :ensure t
@@ -89,4 +86,8 @@
   :hook
   (dired-mode . all-the-icons-dired-mode)
 )
+
+;; ;; golden ratio - adjust size to maximize working window
+;; (require 'golden-ratio)
+;; (golden-ratio-mode 1)
 
