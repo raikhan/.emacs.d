@@ -74,6 +74,22 @@
 ;; Variaty of additional small customizations
 (load "misc.el")
 
+;;
+;; Customizations for individual languages
+;;
+;; (load "setup-R.el")
+;; (load "Rmarkdown.el")
+(load "setup-python.el")
+;; (load "setup-js.el")   ;; Javascript
+;; (load "setup-web.el")  ;; HTML/CSS
+;; (load "setup-SQL.el")
+;; (load "setup-clojure.el")
+;; (load "setup-shell.el")
+;; c/c++
+;; scala
+
+
+
 ;; Make sure that Emacs starts in the HOME directory
 (cd "~")
 
@@ -86,7 +102,7 @@
  ;; If there is more than one, they won't work right.
  '(helm-command-prefix-key "C-c h")
  '(package-selected-packages
-   '(company lsp-ui flycheck company-mode lsp-pyright paredit rainbow-delimiters all-the-icons-dired all-the-icons magit helm-ag indent-tools helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
+   '(blacken-mode company lsp-ui flycheck company-mode paredit rainbow-delimiters all-the-icons-dired all-the-icons magit helm-ag indent-tools helm-swoop neotree avy expand-region multiple-cursors uniquify helm-projectile use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
