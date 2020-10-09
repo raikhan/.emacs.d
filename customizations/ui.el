@@ -88,6 +88,8 @@
 )
 
 ;; ;; golden ratio - adjust size to maximize working window
-;; (require 'golden-ratio)
-;; (golden-ratio-mode 1)
-
+;; (use-package golden-ratio
+;;   :ensure t
+;;   :config
+;;   (golden-ratio-mode 1)
+;; )
